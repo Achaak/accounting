@@ -1,0 +1,54 @@
+@import './../../services/styles/colors'
+
+h2 
+  margin-top: 40px
+  margin-bottom: 40px
+  padding: 30px 0
+  text-align: center
+  border-bottom: 2px solid $main-color
+
+.message-alert 
+  color: $red
+
+.form-connect 
+  margin: 10px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  .input-group
+    margin: 5px 0
+
+    label
+      font-weight: 500
+
+    input
+      width: 100%
+      border-radius: 15px
+      border: 1px solid $light-gray
+      margin: 1px 0
+      padding: 5px 10px
+
+      &:focus
+        margin: 0
+        outline: none
+        border-width: 2px
+
+  input[type="submit"]
+    width: 100%
+    margin: 15px 0
+    border: none
+    border-radius: 15px
+    background-color: $main-color
+    color: white
+    font-weight: 700
+    padding: 5px 40px
+    transition: all 300ms
+    outline: none
+
+    &:hover
+      background-color: $main-color-hover
+
+    &[disabled]
+      background-color: $main-color-disabled
+    

@@ -1,0 +1,25 @@
+<div class="container ">
+  <div class="row auth-ctner">
+    <div class="col-sm-6 offset-sm-3">
+      <h2>Nom de l'appli</h2>
+    </div>
+
+    <div class="col-sm-4 offset-sm-4">
+      <p class="message-alert">{{ messageAlert }}</p>
+    </div>
+      
+    <div class="col-sm-4 offset-sm-4">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-connect">
+        <div class="input-group">
+          <label for="identifier">Nom d'utilisateur</label>
+          <input type="text" id="identifier" name="identifier" placeholder="" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" ngModel required>
+        </div>
+        <input type="submit" value="Se connecter" [disabled]="f.invalid">
+      </form>
+    </div>
+  </div>
+</div>
