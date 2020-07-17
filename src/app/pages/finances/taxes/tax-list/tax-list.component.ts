@@ -28,7 +28,7 @@ export class TaxListComponent implements OnInit {
   updateTaxRoute = RoutesConfig.routes.taxUpdate
   
   // Table
-  displayedColumns: string[] = ['label', 'target', 'value', 'actions'];
+  displayedColumns: string[] = ['label', 'target', 'value', 'startDate', 'endDate', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
@@ -79,4 +79,6 @@ export interface PeriodicElement {
   label: string;
   target: string;
   value: string;
+  startDate: string;
+  endDate: string;
 }

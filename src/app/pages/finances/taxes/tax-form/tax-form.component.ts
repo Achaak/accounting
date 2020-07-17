@@ -23,6 +23,8 @@ export class TaxFormComponent implements OnInit {
     label: undefined,
     target: undefined,
     value: undefined,
+    startDate: undefined,
+    endDate: undefined,
   }
   
   taxes_target = taxes_target
@@ -40,9 +42,11 @@ export class TaxFormComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const values = {
-      label:  form.value['label'] || null,
-      target: form.value['target'] || null,
-      value:  form.value['value'] || null,
+      label:     form.value['label'] || null,
+      target:    form.value['target'] || null,
+      value:     form.value['value'] || null,
+      startDate: form.value['startDate'] || null,
+      endDate:   form.value['endDate'] || null,
     }
 
     if(this.idTaxe) this.updateTaxe(values)

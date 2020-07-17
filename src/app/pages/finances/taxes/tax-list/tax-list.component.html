@@ -14,10 +14,22 @@
         <td mat-cell *matCellDef="let element"> {{ getTargetTaxLabel(element.target).label }} </td>
       </ng-container>
   
-      <!-- Value number Column -->
+      <!-- Value Column -->
       <ng-container matColumnDef="value">
         <th mat-header-cell *matHeaderCellDef> Valeur </th>
         <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+      </ng-container>
+  
+      <!-- Start date Column -->
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Date de début </th>
+        <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+      </ng-container>
+  
+      <!-- End date Column -->
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef> Date de fin </th>
+        <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
       </ng-container>
   
       <!-- City Column -->

@@ -34,6 +34,22 @@
       </div>
 
       <div class="row">
+        <div class="col-sm-4">
+          <div class="input-group">
+            <label for="startDate">Date de début</label>
+            <input type="date" id="startDate" name="startDate" ngModel [(ngModel)]="taxe.startDate">
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="input-group">
+            <label for="endDate">Date de fin</label>
+            <input type="date" id="endDate" name="endDate" ngModel [(ngModel)]="taxe.endDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-sm-12">
           <input type="submit" [value]="submitText" [disabled]="f.invalid">
         </div>
