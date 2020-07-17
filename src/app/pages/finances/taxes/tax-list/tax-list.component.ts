@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import navLeftConfigs from 'src/app/configs/navLeft.configs';
+import taxes_target from 'src/app/configs/tax-target.config';
 import { Subscription } from 'rxjs';
 import { RoutesConfig } from 'src/app/configs/routes.configs';
 import { TaxesService } from 'src/app/services/taxes/taxes.service';
@@ -8,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import _ from 'lodash'
 
 @Component({
   selector: 'app-tax-list',
@@ -26,7 +28,7 @@ export class TaxListComponent implements OnInit {
   updateTaxRoute = RoutesConfig.routes.taxUpdate
   
   // Table
-  displayedColumns: string[] = ['name', 'phone_number', 'mail', "website_link", 'city', 'actions'];
+  displayedColumns: string[] = ['label', 'target', 'value', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
@@ -64,15 +66,17 @@ export class TaxListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       if(!result) return false
 
-      const response = await this.taxesService.deleteTaxe(idTaxe)
+      const response = await this.taxesService.deleteTax(idTaxe)
     })
+  }
+
+  getTargetTaxLabel(value) {
+    return _.find(taxes_target, { value: value})
   }
 }
 
 export interface PeriodicElement {
-  name: string;
-  phone_number: string;
-  mail: string;
-  city: string;
-  website_link: string;
+  label: string;
+  target: string;
+  value: string;
 }

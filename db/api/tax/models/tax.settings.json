@@ -11,6 +11,12 @@
   "attributes": {
     "label": {
       "type": "string"
+    },
+    "value": {
+      "type": "float"
+    },
+    "target": {
+      "type": "string"
     }
   }
 }

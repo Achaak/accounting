@@ -34,15 +34,15 @@ export class TaxesService {
     }
   }
 
-  async getTaxeById(id) {
+  async getTaxById(id) {
     return _.find(this.taxes, { id: parseInt(id) })
   }
 
-  async addTaxe(values) {
+  async addTax(values) {
     let message
     let status
 
-    const func = await Taxes.setTaxe(this.authService.jwtToken, values)
+    const func = await Taxes.setTax(this.authService.jwtToken, values)
 
     // Get status
     status = func.status
@@ -61,11 +61,11 @@ export class TaxesService {
     }
   }
 
-  async updateTaxe(values, idTaxe) {
+  async updateTax(values, idTaxe) {
     let message
     let status
 
-    const func = await Taxes.updateTaxe(this.authService.jwtToken, idTaxe, values)
+    const func = await Taxes.updateTax(this.authService.jwtToken, idTaxe, values)
 
     // Get status
     status = func.status
@@ -84,10 +84,10 @@ export class TaxesService {
     }
   }
 
-  async deleteTaxe(idTaxe) {
+  async deleteTax(idTaxe) {
     let status
 
-    const func = await Taxes.deleteTaxe(this.authService.jwtToken, idTaxe)
+    const func = await Taxes.deleteTax(this.authService.jwtToken, idTaxe)
 
     // Get status
     status = func.status
