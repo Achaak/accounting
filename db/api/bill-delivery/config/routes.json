@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bill-deliveries",
+      "handler": "bill-delivery.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bill-deliveries/count",
+      "handler": "bill-delivery.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bill-deliveries/:id",
+      "handler": "bill-delivery.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bill-deliveries",
+      "handler": "bill-delivery.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bill-deliveries/:id",
+      "handler": "bill-delivery.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bill-deliveries/:id",
+      "handler": "bill-delivery.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

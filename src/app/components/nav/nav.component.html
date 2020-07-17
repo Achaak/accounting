@@ -1,3 +1,11 @@
 <nav>
-  nav
+  <div *ngFor="let blockNav of nav">
+    <h3>{{ blockNav.label }}</h3>
+
+    <ul>
+      <li *ngFor="let nav of blockNav.nav">
+        <a [routerLink]="nav.link">{{ nav.label }}</a>
+      </li>
+    </ul>
+  </div>
 </nav>

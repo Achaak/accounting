@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/user/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/user/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +13,7 @@ export class AuthComponent implements OnInit {
 
   messageAlert: String
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
     if(this.authService.getJwtToken() !== null) 
       this.router.navigate(['/'])
   }
@@ -20,7 +21,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {}
 
   async onSubmit(form: NgForm) {
-    const response = await this.authService.signIn({identifier: form.value["identifier"], password: form.value["password"]})
+    const response = await this.userService.onLogin({identifier: form.value["identifier"], password: form.value["password"]})
 
     this.messageAlert = response.message
   }

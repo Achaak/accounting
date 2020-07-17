@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bill_deliveries",
+  "info": {
+    "name": "bill_delivery"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "float"
+    },
+    "unit_price_HT": {
+      "type": "float"
+    }
+  }
+}

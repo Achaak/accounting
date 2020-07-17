@@ -4,7 +4,9 @@ import { Router } from '@angular/router'
 export class AuthService {
   jwtToken = undefined
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.init()
+  }
 
   async init() {
     
@@ -25,7 +27,6 @@ export class AuthService {
 
     const func = await Auth.getLocal(identifier, password)
 
-    console.log("t", func)
     // Get status
     status = func.status
 
@@ -36,9 +37,6 @@ export class AuthService {
   
       // Set variable auth
       this.jwtToken = func.data.jwt
-  
-      // Redirect
-      this.router.navigate(['/'])
     }
     else {
       message = func.data.message[0].messages[0].message

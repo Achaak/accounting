@@ -10,7 +10,29 @@
   },
   "attributes": {
     "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
       "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "website_link": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "email"
+    },
+    "note": {
+      "type": "richtext"
     }
   }
 }

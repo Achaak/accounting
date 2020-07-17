@@ -9,8 +9,30 @@
     "timestamps": true
   },
   "attributes": {
-    "date": {
+    "client": {
+      "model": "client"
+    },
+    "as_tva": {
+      "type": "boolean"
+    },
+    "discount": {
+      "type": "float"
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "billingDate": {
       "type": "date"
+    },
+    "deliveryDate": {
+      "type": "date"
+    },
+    "bill_deliveries": {
+      "collection": "bill-delivery"
+    },
+    "state": {
+      "type": "integer"
     }
   }
 }

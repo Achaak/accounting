@@ -1,10 +1,11 @@
 import { Users } from './../API'
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 export class UserService {
   public user = undefined;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router:Router) {
     this.init()
   }
 
@@ -57,6 +58,26 @@ export class UserService {
 
   setSession(user) {
     sessionStorage.setItem('user', JSON.stringify(user));
+  }
+
+  async onLogin({ identifier, password }) {
+    const response = await this.authService.signIn({ identifier, password })
+
+    if(response.status !== 200) return response
+
+    // Get user info
+    this.addUser()
+
+    // Redirect
+    this.router.navigate(['/'])
+  }
+
+  onLogout() {
+    this.authService.signOut()
+    this.removeUser()
+
+    // Redirect
+    this.router.navigate(['/auth'])
   }
 
   getSession() {

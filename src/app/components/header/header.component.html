@@ -1,19 +1,25 @@
 <header>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row header-ctner">
-      <div class="col-sm-8 block-left">
-        <h1>Hello</h1>
+      <div class="col-8 block-left">
+        <h1><a routerLink="/">Application</a></h1>
     
         <nav>
           <ul>
-            <li><a href="/">Test</a></li>
+            <li *ngFor="let link of nav">
+              <a [routerLink]="link.link">{{ link.label }}</a>
+            </li>
           </ul>
         </nav>
       </div>
     
-      <div class="col-sm-4">
-        <div>
-          Profil
+      <div class="col-4 block-right">
+        <div class="profil">
+          <div class="profil-picture"></div>
+          
+          <ul class="profil-nav">
+            <li (click)="onLogout()">Se déconnecter</li>
+          </ul>
         </div>
       </div>
     </div>

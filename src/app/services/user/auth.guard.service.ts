@@ -5,15 +5,12 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {
-    console.log('authService')
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   async canActivate(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot
   ) {
-    console.log(await this.authService.getJwtToken())
     if (await this.authService.getJwtToken() === null) {
       this.router.navigate(['/auth'])
     }
