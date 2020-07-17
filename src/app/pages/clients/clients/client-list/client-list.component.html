@@ -39,6 +39,7 @@
           <div class="actions-ctner">
             <fa-icon [icon]="faPen" [routerLink]="updateClientRoute.replace(':id', element.id)"></fa-icon>
             <fa-icon [icon]="faTrash" (click)="onDelete(element.id)"></fa-icon>
+            <fa-icon [icon]="faInfo" [routerLink]="infoClientRoute.replace(':id', element.id)"></fa-icon>
           </div>
         </td>
       </ng-container>

@@ -38,6 +38,10 @@ export class ClientsService {
     return _.find(this.clients, { id: parseInt(id) })
   }
 
+  getClients() {
+    return this.clients
+  }
+
   async addClient(values) {
     let message
     let status
@@ -65,7 +69,7 @@ export class ClientsService {
     let message
     let status
 
-    const func = await Clients.updateClient(this.authService.jwtToken, values, idClient)
+    const func = await Clients.updateClient(this.authService.jwtToken, idClient, values)
 
     // Get status
     status = func.status

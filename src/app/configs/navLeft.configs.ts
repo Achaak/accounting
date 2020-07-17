@@ -24,7 +24,7 @@ export default {
           link: RoutesConfig.routes.billList
         }, {
           label: "Ajouter une facture",
-          link: RoutesConfig.routes.bilNew
+          link: RoutesConfig.routes.billNew
         }
       ]
     }, {

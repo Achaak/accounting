@@ -65,7 +65,7 @@ export class TaxesService {
     let message
     let status
 
-    const func = await Taxes.updateTaxe(this.authService.jwtToken, values, idTaxe)
+    const func = await Taxes.updateTaxe(this.authService.jwtToken, idTaxe, values)
 
     // Get status
     status = func.status

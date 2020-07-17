@@ -1,3 +1,70 @@
 <app-container [navLeft]="navLeft" title="Information de facture">
-  
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="label">Numéro de facture</label>
+          <span class="bill-value">{{ bill.label || '---' }}</span>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="bill">Client</label>
+          <span class="bill-value">{{ (bill.client && bill.client.name) || "---" }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="state">Etat</label>
+          <span class="bill-value" *ngIf="bill.state === -1">Brouillon</span>
+          <span class="bill-value" *ngIf="bill.state ===  0">Délivré</span>
+          <span class="bill-value" *ngIf="bill.state ===  1">Payé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="billingDate">Date de facturation</label>
+          <span class="bill-value">{{ bill.billingDate || '---' }}</span>
+        </div>
+      </div>
+      
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="deliveryDate">Date de livraison</label>
+          <span class="bill-value">{{ bill.deliveryDate || '---' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="total_ht">Total HT</label>
+          <span class="bill-value">{{ bill.total_ht || '---' }} €</span>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="tva">TVA</label>
+          <span class="bill-value">{{ bill.tva || '---' }} %</span>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="discount">Remise</label>
+          <span class="bill-value">{{ bill.discount || '---' }} €</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </app-container>

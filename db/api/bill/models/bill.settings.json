@@ -12,9 +12,6 @@
     "client": {
       "model": "client"
     },
-    "as_tva": {
-      "type": "boolean"
-    },
     "discount": {
       "type": "float"
     },
@@ -28,11 +25,14 @@
     "deliveryDate": {
       "type": "date"
     },
-    "bill_deliveries": {
-      "collection": "bill-delivery"
-    },
     "state": {
       "type": "integer"
+    },
+    "tva": {
+      "type": "float"
+    },
+    "total_ht": {
+      "type": "float"
     }
   }
 }

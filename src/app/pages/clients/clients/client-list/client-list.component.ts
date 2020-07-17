@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table'
 import navLeftConfigs from 'src/app/configs/navLeft.configs';
 import { ClientsService } from 'src/app/services/clients/clients.service';
 import { Subscription } from 'rxjs';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RoutesConfig } from './../../../../configs/routes.configs'
@@ -18,12 +18,14 @@ export class ClientListComponent implements OnInit {
   // Font awesome
   faPen = faPen
   faTrash = faTrash
+  faInfo = faInfo
 
   // Data clients
   clients: any[]
   clientsSubscription: Subscription
 
   updateClientRoute = RoutesConfig.routes.clientUpdate
+  infoClientRoute = RoutesConfig.routes.clientInfo
 
   // Table
   displayedColumns: string[] = ['name', 'phone_number', 'mail', "website_link", 'city', 'actions'];

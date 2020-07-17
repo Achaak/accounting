@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faInfo } from '@fortawesome/free-solid-svg-icons';
 import navLeftConfigs from 'src/app/configs/navLeft.configs';
 import { Subscription } from 'rxjs';
 import { RoutesConfig } from 'src/app/configs/routes.configs';
@@ -18,15 +18,17 @@ export class BillListComponent implements OnInit {
   // Font awesome
   faPen = faPen
   faTrash = faTrash
+  faInfo = faInfo
   
   // Data bills
   bills: any[]
   billsSubscription: Subscription
 
   updateBillRoute = RoutesConfig.routes.billUpdate
+  infoBillRoute = RoutesConfig.routes.billInfo
   
   // Table
-  displayedColumns: string[] = ['name', 'phone_number', 'mail', "website_link", 'city', 'actions'];
+  displayedColumns: string[] = ['label', 'billingDate', 'deliveryDate', 'total_ht', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
@@ -70,9 +72,8 @@ export class BillListComponent implements OnInit {
 }
 
 export interface PeriodicElement {
-  name: string;
-  phone_number: string;
-  mail: string;
-  city: string;
-  website_link: string;
+  label: string;
+  billingDate: Date;
+  deliveryDate: Date;
+  total_ht: number;
 }

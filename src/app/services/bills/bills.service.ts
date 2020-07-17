@@ -65,7 +65,7 @@ export class BillsService {
     let message
     let status
 
-    const func = await Bills.updateBill(this.authService.jwtToken, values, idBill)
+    const func = await Bills.updateBill(this.authService.jwtToken, idBill, values)
 
     // Get status
     status = func.status
