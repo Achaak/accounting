@@ -1,0 +1,37 @@
+<h3 mat-dialog-title>Formulaire de paiement</h3>
+<div mat-dialog-content [formGroup]="form">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <label for="label">Numéro de facture</label>
+          <input type="text" id="label" name="label" formControlName="label" ngModel [(ngModel)]="label" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <label for="amount">Numéro de facture</label>
+          <input type="number" id="amount" name="amount" formControlName="amount" ngModel [(ngModel)]="amount" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <label for="date">Numéro de facture</label>
+          <input type="date" id="date" name="date" formControlName="date" ngModel [(ngModel)]="date" required>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div mat-dialog-actions class="btn-ctner">
+  <button mat-button mat-dialog-close [mat-dialog-close]="false">Annuler</button>
+  <button mat-button (click)="onSubmit()" [disabled]="form.invalid">Valider</button>
+</div>

@@ -31,9 +31,8 @@
           <div class="input-group">
             <label for="state">Etat</label>
             <select id="state" name="state" ngModel [(ngModel)]="bill.state" required>
-              <option value="-1" selected>Brouillon</option>
-              <option value="0">Délivré</option>
-              <option value="1">Payé</option>
+              <option value="0" selected>Brouillon</option>
+              <option value="1">Validé</option>
             </select>
           </div>
         </div>

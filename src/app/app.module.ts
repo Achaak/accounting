@@ -36,6 +36,9 @@ import { DialogComponent } from './components/dialog/dialog.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { ClientInfoComponent } from './pages/clients/clients/client-info/client-info.component';
 import { BillInfoComponent } from './pages/finances/bills/bill-info/bill-info.component';
+import { DialogFormPaymentComponent } from './pages/finances/bills/bill-info/dialog-form-payment/dialog-form-payment.component';
+import { BillListInfoComponent } from './pages/finances/bills/bill-list/bill-list-info/bill-list-info.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -57,9 +60,13 @@ import { BillInfoComponent } from './pages/finances/bills/bill-info/bill-info.co
     DialogComponent,
     ClientInfoComponent,
     BillInfoComponent,
+    DialogFormPaymentComponent,
+    BillListInfoComponent,
+    CardComponent,
   ],
   entryComponents: [
     DialogComponent,
+    DialogFormPaymentComponent,
   ],
   imports: [
     BrowserModule,

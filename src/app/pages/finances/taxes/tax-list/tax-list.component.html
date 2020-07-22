@@ -23,13 +23,13 @@
       <!-- Start date Column -->
       <ng-container matColumnDef="startDate">
         <th mat-header-cell *matHeaderCellDef> Date de début </th>
-        <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.startDate | date:'dd/MM/yyyy'}} </td>
       </ng-container>
   
       <!-- End date Column -->
       <ng-container matColumnDef="endDate">
         <th mat-header-cell *matHeaderCellDef> Date de fin </th>
-        <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.endDate | date:'dd/MM/yyyy'}} </td>
       </ng-container>
   
       <!-- City Column -->

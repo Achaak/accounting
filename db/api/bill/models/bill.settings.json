@@ -33,6 +33,10 @@
     },
     "total_ht": {
       "type": "float"
+    },
+    "bill_payments": {
+      "collection": "bill-payment",
+      "via": "bill"
     }
   }
 }

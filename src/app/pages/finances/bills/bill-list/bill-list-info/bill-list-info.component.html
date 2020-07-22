@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Informations</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="input-group">
+        <label for="total-HT">Total HT</label>
+        <span id="total-HT" class="bill-value">{{ getTotalHT() }} €</span>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="input-group">
+        <label for="total-TTC">Total TTC</label>
+        <span id="total-TTC" class="bill-value">{{ getTotalTTC() }} €</span>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="input-group">
+        <label for="left-to-pay">En attente de paiement</label>
+        <span id="left-to-pay" class="bill-value">{{ getLeftToPay() }} €</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Bills } from './../API'
+import { Bills, BillPayments } from './../API'
 import { AuthService } from '../user/auth.service';
 import { Subject } from 'rxjs';
 import _ from 'lodash'
@@ -88,6 +88,70 @@ export class BillsService {
     let status
 
     const func = await Bills.deleteBill(this.authService.jwtToken, idBill)
+
+    // Get status
+    status = func.status
+
+    // If error
+    if(func.status === 200) {
+      this.loadBills()
+    }
+
+    return {
+      status: status
+    }
+  }
+
+  async addBillPayment(values) {
+    let message
+    let status
+
+    const func = await BillPayments.setBillPayment(this.authService.jwtToken, values)
+
+    // Get status
+    status = func.status
+
+    // If error
+    if(func.status === 200) {
+      this.loadBills()
+    }
+    else {
+      message = "Les champs comportants * doivent être remplis"
+    }
+
+    return {
+      message: message,
+      status: status
+    }
+  }
+
+  async updateBillPayment(values, idBillPaiments) {
+    let message
+    let status
+
+    const func = await BillPayments.updateBillPayment(this.authService.jwtToken, idBillPaiments, values)
+
+    // Get status
+    status = func.status
+
+    // If error
+    if(func.status === 200) {
+      this.loadBills()
+    }
+    else {
+      message = "Les champs comportants * doivent être remplis"
+    }
+
+    return {
+      message: message,
+      status: status
+    }
+  }
+
+  async deleteBillPayment(idBill) {
+    let status
+
+    const func = await BillPayments.deleteBillPayment(this.authService.jwtToken, idBill)
 
     // Get status
     status = func.status

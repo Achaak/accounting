@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bill-payments",
+      "handler": "bill-payment.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bill-payments/count",
+      "handler": "bill-payment.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bill-payments/:id",
+      "handler": "bill-payment.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bill-payments",
+      "handler": "bill-payment.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bill-payments/:id",
+      "handler": "bill-payment.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bill-payments/:id",
+      "handler": "bill-payment.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

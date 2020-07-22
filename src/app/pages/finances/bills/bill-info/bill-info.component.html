@@ -5,14 +5,14 @@
       <div class="col-sm-2">
         <div class="input-group">
           <label for="label">Numéro de facture</label>
-          <span class="bill-value">{{ bill.label || '---' }}</span>
+          <span id="label" class="bill-value">{{ bill.label || '---' }}</span>
         </div>
       </div>
 
       <div class="col-sm-2">
         <div class="input-group">
           <label for="bill">Client</label>
-          <span class="bill-value">{{ (bill.client && bill.client.name) || "---" }}</span>
+          <span id="bill" class="bill-value">{{ (bill.client && bill.client.name) || "---" }}</span>
         </div>
       </div>
     </div>
@@ -21,9 +21,8 @@
       <div class="col-sm-2">
         <div class="input-group">
           <label for="state">Etat</label>
-          <span class="bill-value" *ngIf="bill.state === -1">Brouillon</span>
-          <span class="bill-value" *ngIf="bill.state ===  0">Délivré</span>
-          <span class="bill-value" *ngIf="bill.state ===  1">Payé</span>
+          <span id="state" class="bill-value" *ngIf="bill.state === 0">Brouillon</span>
+          <span id="state" class="bill-value" *ngIf="bill.state ===  1">Validé</span>
         </div>
       </div>
     </div>
@@ -32,14 +31,14 @@
       <div class="col-sm-2">
         <div class="input-group">
           <label for="billingDate">Date de facturation</label>
-          <span class="bill-value">{{ bill.billingDate || '---' }}</span>
+          <span id="billingDate" class="bill-value">{{ bill.billingDate || '---' }}</span>
         </div>
       </div>
       
       <div class="col-sm-2">
         <div class="input-group">
           <label for="deliveryDate">Date de livraison</label>
-          <span class="bill-value">{{ bill.deliveryDate || '---' }}</span>
+          <span id="deliveryDate" class="bill-value">{{ bill.deliveryDate || '---' }}</span>
         </div>
       </div>
     </div>
@@ -48,21 +47,57 @@
       <div class="col-sm-2">
         <div class="input-group">
           <label for="total_ht">Total HT</label>
-          <span class="bill-value">{{ bill.total_ht || '---' }} €</span>
+          <span id="total_ht" class="bill-value">{{ bill.total_ht || '---' }} €</span>
         </div>
       </div>
 
       <div class="col-sm-2">
         <div class="input-group">
           <label for="tva">TVA</label>
-          <span class="bill-value">{{ bill.tva || '---' }} %</span>
+          <span id="tva" class="bill-value">{{ bill.tva || '---' }} %</span>
         </div>
       </div>
 
       <div class="col-sm-2">
         <div class="input-group">
           <label for="discount">Remise</label>
-          <span class="bill-value">{{ bill.discount || '---' }} €</span>
+          <span id="discount" class="bill-value">{{ bill.discount || '---' }} €</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group">
+          <label for="left-to-pay">Reste à payer</label>
+          <span id="left-to-pay" class="bill-value">{{ getLeftToPay() }} €</span>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="row" *ngIf="bill.state ===  1">
+      <h4>Liste des paiements</h4>
+
+      <div class="col-sm-12">
+        <button (click)="addPayment()">Ajouter un paiment</button>
+      </div>
+      
+      <div class="col-sm-12">
+        <div class="row" *ngFor="let payment of bill.bill_payments">
+          <div class="col-sm-3">
+            <span>{{ payment.label }}</span>
+          </div>
+          <div class="col-sm-3">
+            <span>{{ payment.amount }} €</span>
+          </div>
+          <div class="col-sm-3">
+            <span>{{ payment.date }}</span>
+          </div>
+          <div class="col-sm-3">
+            <fa-icon [icon]="faPen" (click)="onUpdatePayment(payment.id)"></fa-icon>
+            <fa-icon [icon]="faTrash" (click)="onDeletePayment(payment.id)"></fa-icon>
+          </div>
         </div>
       </div>
     </div>

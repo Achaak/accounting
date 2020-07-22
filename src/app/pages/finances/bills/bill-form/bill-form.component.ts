@@ -28,7 +28,7 @@ export class BillFormComponent implements OnInit {
     billingDate: undefined,
     deliveryDate: undefined,
     total_ht: undefined,
-    state: -1,
+    state: 0,
   }
   clients = []
 

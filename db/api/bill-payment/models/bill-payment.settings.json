@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bill_payments",
+  "info": {
+    "name": "bill-payment"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "float"
+    },
+    "date": {
+      "type": "date"
+    },
+    "bill": {
+      "via": "bill_payments",
+      "model": "bill"
+    }
+  }
+}
