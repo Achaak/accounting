@@ -16,6 +16,10 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          "allowedCommonJsDependencies": [
+            "lodash",
+            "axios"
+          ],
           "options": {
             "outputPath": "dist/my-app",
             "index": "src/index.html",
