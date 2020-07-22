@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "i": "npm i && cd db && npm i",
-    "start": "concurrently \"ng serve\" \"cd db && npm run start\"",
+    "start": "concurrently \"http-server .\\dist\\my-app\" \"cd db && npm run start\"",
     "develop": "concurrently \"ng serve\" \"cd db && npm run develop\"",
-    "build": "concurrently \"ng build\" \"cd db && npm run build\"",
+    "build": "concurrently \"ng build --prod\" \"cd db && npm run build\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -34,6 +34,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
+    "http-server": "^0.12.3",
     "lodash": "^4.17.19",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
