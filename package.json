@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "i": "npm i && cd db && npm i",
-    "start": "concurrently \"http-server .\\dist\\my-app -p 4200\" \"cd db && npm run start\"",
+    "start": "concurrently \"lite-server --baseDir .\\dist\\my-app -p 4200\" \"cd db && npm run start\"",
     "develop": "concurrently \"ng serve\" \"cd db && npm run develop\"",
-    "build": "concurrently \"ng build --prod\" \"cd db && npm run build\"",
+    "build": "ng build --prod && cd db && npm run build\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
