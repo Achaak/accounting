@@ -1,6 +1,6 @@
 import { config } from './../../../../config/config'
 
-const API_URL = `http://${config.ip_server}:4201`
+const API_URL = `http://${config.server_path}/CMS`
 
 export {
   API_URL
