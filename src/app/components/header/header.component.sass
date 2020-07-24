@@ -1,12 +1,63 @@
 @import './../../services/styles/colors'
-  
+@import './../../services/styles/responsive'
+
+.nav-top-open-btn
+  width: 60px
+  padding: 10px
+  cursor: pointer
+  margin-right: 10px !important
+
+  @media screen and (min-width: $w-md)
+    display: none
+
+  li
+    background-color: white
+    height: 5px
+    width: 100%
+    margin: 7px 0
+    border-radius: 5px
+
+.nav-burger
+  @media screen and (min-width: $w-md)
+    display: none
+
+  @media screen and (max-width: $w-md)
+    background-color: white
+    position: fixed
+    left: 0
+    right: 0
+    bottom: 100%
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.5)
+    height: calc(100vh - 70px)
+    margin: 0
+    z-index: 5
+    transition: all 300ms
+
+    &.open
+      bottom: 0
+
+    ul
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      padding: 20px
+
+      li
+        margin: 10px 0
+        list-style: none
+        a
+          font-size: 2rem
+          color: $main-color
+          text-decoration: none
+
 header
   background-color: $main-color
   position: fixed
   top: 0
   left: 0
   right: 0
-  z-index: 10
+  z-index: 15
   box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2)
 
   .header-ctner
@@ -34,6 +85,9 @@ header
 
     nav
       margin-left: 20px
+
+      @media screen and (max-width: $w-md)
+        display: none
 
       ul
         display: flex

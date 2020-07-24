@@ -1,3 +1,63 @@
 <app-container [navLeft]="navLeft" title="Finances">
   
+  <div class="date-ctner">
+    <input type="date" #dateStart (change)="setDateStart(dateStart.value)">
+    <input type="date" #dateEnd (change)="setDateEnd(dateEnd.value)">
+  </div>
+  
+  <app-card>
+    <div class="container-fluid">
+  
+      <div class="row">
+        <div class="col-12">
+          <h3>Résumé</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="input-group">
+            <label for="total-HT">Total HT</label>
+            <span id="total-HT" class="bill-value">{{ getTotalHT() }} €</span>
+          </div>
+        </div>
+    
+        <div class="col-sm-2">
+          <div class="input-group">
+            <label for="total-TTC">Total TTC</label>
+            <span id="total-TTC" class="bill-value">{{ getTotalTTC() }} €</span>
+          </div>
+        </div>
+    
+        <div class="col-sm-2">
+          <div class="input-group">
+            <label for="left-to-pay">En attente de paiement</label>
+            <span id="left-to-pay" class="bill-value">{{ getLeftToPay() }} €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+  
+  <app-card>
+    <div class="container-fluid">
+  
+      <div class="row">
+        <div class="col-12">
+          <h3>Taxes</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2" *ngFor="let tax of taxes">
+          <div class="input-group">
+            <label for="total-{{ tax.label }}">{{ tax.label }}</label>
+            <span id="total-{{ tax.label }}" class="bill-value" *ngIf="tax.target === 'fixed-tax'">{{ tax.value }} €</span>
+            <span id="total-{{ tax.label }}" class="bill-value" *ngIf="tax.target === 'sales-revenue'">{{ getTaxResult(tax) }} € ({{ tax.value }} %)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+  
 </app-container>

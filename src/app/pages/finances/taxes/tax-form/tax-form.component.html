@@ -3,55 +3,60 @@
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-sm-12">
-          <p class="message-alert">{{ messageAlert }}</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="label">Dénomination</label>
-            <input type="text" id="label" name="label" ngModel [(ngModel)]="taxe.label" required>
+        <div class="col-12 col-lg-6">
+          <div class="row">
+            <div class="col-12">
+              <p class="message-alert">{{ messageAlert }}</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="target">Cible</label>
-            <select id="target" name="target" ngModel [(ngModel)]="taxe.target" required>
-              <option *ngFor="let tax_target of taxes_target" [value]="tax_target.value">{{ tax_target.label }}</option>
-            </select>
-          </div>
-        </div>
 
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="value">Valeur</label>
-            <input type="number" id="value" name="value" ngModel [(ngModel)]="taxe.value" required>
-          </div>
-        </div>
-      </div>
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="label">Dénomination</label>
+                <input type="text" id="label" name="label" ngModel [(ngModel)]="taxe.label" required>
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="target">Cible</label>
+                <select id="target" #target name="target" ngModel [(ngModel)]="taxe.target" required>
+                  <option *ngFor="let tax_target of taxes_target" [value]="tax_target.value">{{ tax_target.label }}</option>
+                </select>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="startDate">Date de début</label>
-            <input type="date" id="startDate" name="startDate" ngModel [(ngModel)]="taxe.startDate">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="value" *ngIf="target.value !== 'sales-revenue'">Valeur (€)</label>
+                <label for="value" *ngIf="target.value === 'sales-revenue'">Valeur (%)</label>
+                <input type="number" id="value" name="value" ngModel [(ngModel)]="taxe.value" required>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="endDate">Date de fin</label>
-            <input type="date" id="endDate" name="endDate" ngModel [(ngModel)]="taxe.endDate">
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="startDate">Date de début</label>
+                <input type="date" id="startDate" name="startDate" ngModel [(ngModel)]="taxe.startDate" required>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="endDate">Date de fin</label>
+                <input type="date" id="endDate" name="endDate" ngModel [(ngModel)]="taxe.endDate" required>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-12">
-          <input type="submit" [value]="submitText" [disabled]="f.invalid">
+          <div class="row">
+            <div class="col-12">
+              <input type="submit" [value]="submitText" [disabled]="f.invalid">
+            </div>
+          </div>
         </div>
       </div>
     </div>

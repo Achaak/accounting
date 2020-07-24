@@ -1,4 +1,14 @@
-<nav>
+<nav [ngClass]="{'open' : isOpen}">
+  <ul class="nav-left-open-btn" (click)="onOpen(true)">
+    <li></li>
+    <li></li>
+  </ul>
+  
+  <ul class="nav-left-close-btn" (click)="onOpen(false)">
+    <li></li>
+    <li></li>
+  </ul>
+
   <div *ngFor="let blockNav of nav">
     <h3>{{ blockNav.label }}</h3>
 

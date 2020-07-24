@@ -1,13 +1,28 @@
+<nav class="nav-burger" [ngClass]="{'open' : isOpen}">
+  <ul>
+    <li *ngFor="let link of nav">
+      <a [routerLink]="link.link" (click)="onOpen(false)">{{ link.label }}</a>
+    </li>
+  </ul>
+</nav>
+
 <header>
   <div class="container-fluid">
     <div class="row header-ctner">
       <div class="col-8 block-left">
+        
+        <ul class="nav-top-open-btn" (click)="onOpen()">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+
         <h1><a routerLink="/">Application</a></h1>
     
         <nav>
           <ul>
             <li *ngFor="let link of nav">
-              <a [routerLink]="link.link">{{ link.label }}</a>
+              <a [routerLink]="link.link" (click)="onOpen(false)">{{ link.label }}</a>
             </li>
           </ul>
         </nav>

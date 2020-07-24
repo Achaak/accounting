@@ -8,9 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavComponent implements OnInit {
   
   @Input() nav
+  isOpen = false
 
   constructor() { }
 
   ngOnInit(): void {}
 
+  onOpen(bool) {
+    this.isOpen = bool
+  }
 }

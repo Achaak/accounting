@@ -15,7 +15,7 @@ export class BillsService {
       await this.loadBills()
   }
 
-  emitAppareilSubject() {
+  emitBillsSubject() {
     this.billsSubject.next(this.bills.slice())
   }
 
@@ -30,7 +30,7 @@ export class BillsService {
     // If error
     if(func.status === 200) {
       this.bills = func.data
-      this.emitAppareilSubject();
+      this.emitBillsSubject();
     }
   }
 

@@ -3,80 +3,84 @@
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-sm-12">
-          <p class="message-alert">{{ messageAlert }}</p>
-        </div>
-      </div>
+        <div class="col-12 col-lg-6">
+          <div class="row">
+            <div class="col-12">
+              <p class="message-alert">{{ messageAlert }}</p>
+            </div>
+          </div>
 
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="name">Nom / Entreprise</label>
-            <input type="text" id="name" name="name" ngModel [(ngModel)]="client.name" required>
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="name">Nom / Entreprise</label>
+                <input type="text" id="name" name="name" ngModel [(ngModel)]="client.name" required>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-        
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="address">Adresse</label>
-            <input type="text" id="address" name="address" [(ngModel)]="client.address" ngModel>
-          </div>
-        </div>
+            
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="address">Adresse</label>
+                <input type="text" id="address" name="address" [(ngModel)]="client.address" ngModel>
+              </div>
+            </div>
 
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="postal_code">Code postal</label>
-            <input type="text" id="postal_code" name="postal_code" [(ngModel)]="client.postal_code" ngModel>
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="postal_code">Code postal</label>
+                <input type="text" id="postal_code" name="postal_code" [(ngModel)]="client.postal_code" ngModel>
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="city">Ville</label>
+                <input type="text" id="city" name="city" [(ngModel)]="client.city" ngModel>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        <div class="col-sm-4">
-          <div class="input-group">
-            <label for="city">Ville</label>
-            <input type="text" id="city" name="city" [(ngModel)]="client.city" ngModel>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="input-group">
-            <label for="phone_number">Numéro de téléphone</label>
-            <input type="text" id="phone_number" name="phone_number" [(ngModel)]="client.phone_number" ngModel>
-          </div>
-        </div>
           
-        <div class="col-sm-6">
-          <div class="input-group">
-            <label for="mail">Mail</label>
-            <input type="email" id="mail" name="mail" [(ngModel)]="client.mail" ngModel email>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="input-group">
+                <label for="phone_number">Numéro de téléphone</label>
+                <input type="text" id="phone_number" name="phone_number" [(ngModel)]="client.phone_number" ngModel>
+              </div>
+            </div>
+              
+            <div class="col-12 col-lg-6">
+              <div class="input-group">
+                <label for="mail">Mail</label>
+                <input type="email" id="mail" name="mail" [(ngModel)]="client.mail" ngModel email>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="input-group">
-            <label for="website_link">Site web</label>
-            <input type="text" id="website_link" name="website_link" [(ngModel)]="client.website_link" ngModel>
+          
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="input-group">
+                <label for="website_link">Site web</label>
+                <input type="text" id="website_link" name="website_link" [(ngModel)]="client.website_link" ngModel>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="input-group">
-            <label for="note">Note</label>
-            <textarea id="note" name="note" [(ngModel)]="client.note" ngModel></textarea>
+          
+          <div class="row">
+            <div class="col-12">
+              <div class="input-group">
+                <label for="note">Note</label>
+                <textarea id="note" name="note" [(ngModel)]="client.note" ngModel></textarea>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-12">
-          <input type="submit" [value]="submitText" [disabled]="f.invalid">
+          <div class="row">
+            <div class="col-12">
+              <input type="submit" [value]="submitText" [disabled]="f.invalid">
+            </div>
+          </div>
         </div>
       </div>
     </div>

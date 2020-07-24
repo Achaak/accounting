@@ -3,6 +3,7 @@ import navLeftConfigs from 'src/app/configs/navLeft.configs';
 import { TaxesService } from 'src/app/services/taxes/taxes.service';
 import { BillsService } from 'src/app/services/bills/bills.service';
 import { Subscription } from 'rxjs';
+import { getCA, getTotalHT, getTotalTTC, getLeftToPay } from '../../services/tools/finance';
 
 @Component({
   selector: 'app-finances',
@@ -10,6 +11,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./finances.component.sass']
 })
 export class FinancesComponent implements OnInit {
+
+  // Date
+  dateStart: Date
+  dateEnd: Date
   
   // Data taxes
   taxes: any[]
@@ -37,10 +42,28 @@ export class FinancesComponent implements OnInit {
 
     this.taxesSubscription = this.taxesService.taxesSubject.subscribe(
       (taxes: any) => {
-        this.taxes = taxes
+        let taxesFinal = taxes
+        
+        if(this.dateStart) {
+          const dateStart = new Date(this.dateStart).getTime()
+
+          taxesFinal = taxesFinal.filter((o) => {
+            return new Date(o.billingDate).getTime() >= dateStart
+          })
+        }
+
+        if(this.dateEnd) {
+          const dateEnd = new Date(this.dateEnd).getTime()
+
+          taxesFinal = taxesFinal.filter((o) => {
+            return new Date(o.billingDate).getTime() <= dateEnd
+          })
+        }
+
+        this.taxes = taxesFinal
       }
     )
-    this.taxesService.emitAppareilSubject()
+    this.taxesService.emitTaxesSubject()
   }
 
   async initBills() {
@@ -48,9 +71,48 @@ export class FinancesComponent implements OnInit {
 
     this.billsSubscription = this.billsService.billsSubject.subscribe(
       (bills: any) => {
-        this.bills = bills
+        let billsFinal = bills
+        
+        if(this.dateStart) {
+          const dateStart = new Date(this.dateStart).getTime()
+
+          billsFinal = billsFinal.filter((o) => {
+            return new Date(o.billingDate).getTime() >= dateStart
+          })
+        }
+
+        if(this.dateEnd) {
+          const dateEnd = new Date(this.dateEnd).getTime()
+
+          billsFinal = billsFinal.filter((o) => {
+            return new Date(o.billingDate).getTime() <= dateEnd
+          })
+        }
+        this.bills = billsFinal
       }
     )
-    this.billsService.emitAppareilSubject()
+    this.billsService.emitBillsSubject()
+  }
+
+  setDateStart(value) {
+    this.dateStart = value
+    this.billsService.emitBillsSubject()
+    this.taxesService.emitTaxesSubject()
+  }
+
+  setDateEnd(value) {
+    this.dateEnd = value
+    this.billsService.emitBillsSubject()
+    this.taxesService.emitTaxesSubject()
+  }
+
+  getTotalHT() { return getTotalHT(this.bills) }
+  getTotalTTC() { return getTotalTTC(this.bills) }
+  getLeftToPay() { return getLeftToPay(this.bills) }
+
+  getTaxResult(tax) {
+    const CA = getCA(this.bills)
+
+    return CA*(tax.value/100)
   }
 }

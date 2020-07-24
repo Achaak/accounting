@@ -52,7 +52,7 @@ export class ClientListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     )
-    this.clientsService.emitAppareilSubject()
+    this.clientsService.emitClientsSubject()
   }
 
   onDelete(idClient) {

@@ -77,7 +77,7 @@ export class BillListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     )
-    this.billsService.emitAppareilSubject()
+    this.billsService.emitBillsSubject()
   }
 
   onDelete(idBill) {
@@ -97,12 +97,12 @@ export class BillListComponent implements OnInit {
 
   setDateStart(value) {
     this.dateStart = value
-    this.billsService.emitAppareilSubject()
+    this.billsService.emitBillsSubject()
   }
 
   setDateEnd(value) {
     this.dateEnd = value
-    this.billsService.emitAppareilSubject()
+    this.billsService.emitBillsSubject()
   }
 
   getLeftToPay(idBill) {

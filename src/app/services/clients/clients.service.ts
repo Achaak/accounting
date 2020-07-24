@@ -15,7 +15,7 @@ export class ClientsService {
       await this.loadClients()
   }
 
-  emitAppareilSubject() {
+  emitClientsSubject() {
     this.clientsSubject.next(this.clients.slice())
   }
 
@@ -30,7 +30,7 @@ export class ClientsService {
     // If error
     if(func.status === 200) {
       this.clients = func.data
-      this.emitAppareilSubject();
+      this.emitClientsSubject();
     }
   }
 

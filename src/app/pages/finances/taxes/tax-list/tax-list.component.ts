@@ -52,7 +52,7 @@ export class TaxListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     )
-    this.taxesService.emitAppareilSubject()
+    this.taxesService.emitTaxesSubject()
   }
 
   onDelete(idTaxe) {

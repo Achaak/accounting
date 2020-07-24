@@ -3,83 +3,87 @@
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-sm-12">
-          <p class="message-alert">{{ messageAlert }}</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="label">Numéro de facture</label>
-            <input type="text" id="label" name="label" ngModel [(ngModel)]="bill.label" required>
+        <div class="col-12 col-lg-6">
+          <div class="row">
+            <div class="col-12 col-lg-12">
+              <p class="message-alert">{{ messageAlert }}</p>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="client">Client</label>
-            <select id="client" name="client" ngModel [(ngModel)]="bill.client && bill.client.id" required>
-              <option *ngFor="let client of clients" [value]="client.id">{{ client.name }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="label">Numéro de facture</label>
+                <input type="text" id="label" name="label" ngModel [(ngModel)]="bill.label" required>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="state">Etat</label>
-            <select id="state" name="state" ngModel [(ngModel)]="bill.state" required>
-              <option value="0" selected>Brouillon</option>
-              <option value="1">Validé</option>
-            </select>
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="client">Client</label>
+                <select id="client" name="client" ngModel [(ngModel)]="bill.client && bill.client.id" required>
+                  <option *ngFor="let client of clients" [value]="client.id">{{ client.name }}</option>
+                </select>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="billingDate">Date de facturation</label>
-            <input type="date" id="billingDate" name="billingDate" ngModel [(ngModel)]="bill.billingDate" required>
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="state">Etat</label>
+                <select id="state" name="state" ngModel [(ngModel)]="bill.state" required>
+                  <option value="0" selected>Brouillon</option>
+                  <option value="1">Validé</option>
+                </select>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="deliveryDate">Date de livraison</label>
-            <input type="date" id="deliveryDate" name="deliveryDate" ngModel [(ngModel)]="bill.deliveryDate" required>
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="total_ht">Total HT (€)</label>
-            <input type="number" id="total_ht" name="total_ht" ngModel [(ngModel)]="bill.total_ht">
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="billingDate">Date de facturation</label>
+                <input type="date" id="billingDate" name="billingDate" ngModel [(ngModel)]="bill.billingDate" required>
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="deliveryDate">Date de livraison</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" ngModel [(ngModel)]="bill.deliveryDate" required>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="tva">TVA (%)</label>
-            <input type="number" id="tva" name="tva" ngModel [(ngModel)]="bill.tva">
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="total_ht">Total HT (€)</label>
+                <input type="number" id="total_ht" name="total_ht" ngModel [(ngModel)]="bill.total_ht">
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="tva">TVA (%)</label>
+                <input type="number" id="tva" name="tva" ngModel [(ngModel)]="bill.tva">
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="discount">Remise (€)</label>
+                <input type="number" id="discount" name="discount" ngModel [(ngModel)]="bill.discount">
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-2">
-          <div class="input-group">
-            <label for="discount">Remise (€)</label>
-            <input type="number" id="discount" name="discount" ngModel [(ngModel)]="bill.discount">
+          <div class="row">
+            <div class="col-12">
+              <input type="submit" [value]="submitText" [disabled]="f.invalid">
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-4">
-          <input type="submit" [value]="submitText" [disabled]="f.invalid">
         </div>
       </div>
     </div>

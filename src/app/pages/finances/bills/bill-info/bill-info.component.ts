@@ -57,7 +57,7 @@ export class BillInfoComponent implements OnInit {
         this.bill = await this.billsService.getBillById(this.idBill)
       }
     )
-    this.billsService.emitAppareilSubject()
+    this.billsService.emitBillsSubject()
   }
 
   getLeftToPay() {

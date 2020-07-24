@@ -1,4 +1,5 @@
 @import './../../services/styles/colors'
+@import './../../services/styles/responsive'
   
 .page-ctner 
   position: absolute
@@ -6,6 +7,9 @@
   top: 70px
   right: 0
   padding: 20px 30px
+
+  @media screen and (max-width: $w-md)
+    left: 0
 
   h2
     padding-bottom: 20px 

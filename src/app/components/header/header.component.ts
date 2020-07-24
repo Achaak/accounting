@@ -8,6 +8,7 @@ import { RoutesConfig } from './../../configs/routes.configs'
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
+  isOpen = false
 
   nav = [
     {
@@ -24,6 +25,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onOpen(bool = !this.isOpen) {
+    this.isOpen = bool
   }
 
   onLogout() {

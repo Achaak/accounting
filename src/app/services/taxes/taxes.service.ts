@@ -15,7 +15,7 @@ export class TaxesService {
       await this.loadTaxes()
   }
 
-  emitAppareilSubject() {
+  emitTaxesSubject() {
     this.taxesSubject.next(this.taxes.slice())
   }
 
@@ -30,7 +30,7 @@ export class TaxesService {
     // If error
     if(func.status === 200) {
       this.taxes = func.data
-      this.emitAppareilSubject();
+      this.emitTaxesSubject();
     }
   }
 

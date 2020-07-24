@@ -79,11 +79,11 @@
     <div class="row" *ngIf="bill.state ===  1">
       <h4>Liste des paiements</h4>
 
-      <div class="col-sm-12">
+      <div class="col-12">
         <button (click)="addPayment()">Ajouter un paiment</button>
       </div>
       
-      <div class="col-sm-12">
+      <div class="col-12">
         <div class="row" *ngFor="let payment of bill.bill_payments">
           <div class="col-sm-3">
             <span>{{ payment.label }}</span>
