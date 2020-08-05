@@ -17,6 +17,9 @@ import { ContactsListComponent } from './pages/contacts/contacts/contacts-list/c
 import { ContactInfoComponent } from './pages/contacts/contacts/contact-info/contact-info.component';
 import { ClientsListComponent } from './pages/contacts/contacts/clients-list/clients-list.component';
 import { ContactsRegularListComponent } from './pages/contacts/contacts/contacts-regular-list/contacts-regular-list.component';
+import { ProjectsFormComponent } from './pages/contacts/projects/projects-form/projects-form.component';
+import { ProjectsInfoComponent } from './pages/contacts/projects/projects-info/projects-info.component';
+import { ProjectsListComponent } from './pages/contacts/projects/projects-list/projects-list.component';
 
 const routesNames = RoutesConfig.routesNames;
 
@@ -28,21 +31,26 @@ const routes: Routes = [
   { path: routesNames.error404, component: NotFoundComponent },
 
   { path: routesNames.finances,   component: FinancesComponent, canActivate: [AuthGuard] },
-  { path: routesNames.taxNew,     component: TaxFormComponent,  canActivate: [AuthGuard] },
-  { path: routesNames.taxUpdate,  component: TaxFormComponent,  canActivate: [AuthGuard] },
-  { path: routesNames.taxList,    component: TaxListComponent,  canActivate: [AuthGuard] },
-  { path: routesNames.billNew,    component: BillFormComponent, canActivate: [AuthGuard] },
-  { path: routesNames.billUpdate, component: BillFormComponent, canActivate: [AuthGuard] },
-  { path: routesNames.billList,   component: BillListComponent, canActivate: [AuthGuard] },
-  { path: routesNames.billInfo,   component: BillInfoComponent, canActivate: [AuthGuard] },
+    { path: routesNames.taxNew,     component: TaxFormComponent,  canActivate: [AuthGuard] },
+    { path: routesNames.taxUpdate,  component: TaxFormComponent,  canActivate: [AuthGuard] },
+    { path: routesNames.taxList,    component: TaxListComponent,  canActivate: [AuthGuard] },
+    { path: routesNames.billNew,    component: BillFormComponent, canActivate: [AuthGuard] },
+    { path: routesNames.billUpdate, component: BillFormComponent, canActivate: [AuthGuard] },
+    { path: routesNames.billList,   component: BillListComponent, canActivate: [AuthGuard] },
+    { path: routesNames.billInfo,   component: BillInfoComponent, canActivate: [AuthGuard] },
 
-  { path: routesNames.contacts,                component: ContactsComponent,              canActivate: [AuthGuard] },
-  { path: routesNames.contactsNew,             component: ContactFormComponent,           canActivate: [AuthGuard] },
-  { path: routesNames.contactsUpdate,          component: ContactFormComponent,           canActivate: [AuthGuard] },
-  { path: routesNames.contactsInfo,            component: ContactInfoComponent,           canActivate: [AuthGuard] },
-  { path: routesNames.contactsList,            component: ContactsListComponent,          canActivate: [AuthGuard] },
-  { path: routesNames.contactsClientsList,     component: ClientsListComponent,           canActivate: [AuthGuard] },
-  { path: routesNames.contactsRegularList,   component: ContactsRegularListComponent, canActivate: [AuthGuard] },
+  { path: routesNames.contacts,              component: ContactsComponent,            canActivate: [AuthGuard] },
+    { path: routesNames.contactsNew,         component: ContactFormComponent,         canActivate: [AuthGuard] },
+    { path: routesNames.contactsUpdate,      component: ContactFormComponent,         canActivate: [AuthGuard] },
+    { path: routesNames.contactsInfo,        component: ContactInfoComponent,         canActivate: [AuthGuard] },
+    { path: routesNames.contactsList,        component: ContactsListComponent,        canActivate: [AuthGuard] },
+    { path: routesNames.contactsClientsList, component: ClientsListComponent,         canActivate: [AuthGuard] },
+    { path: routesNames.contactsRegularList, component: ContactsRegularListComponent, canActivate: [AuthGuard] },
+
+    { path: routesNames.projectsNew,    component: ProjectsFormComponent, canActivate: [AuthGuard] },
+    { path: routesNames.projectsUpdate, component: ProjectsFormComponent, canActivate: [AuthGuard] },
+    { path: routesNames.projectsInfo,   component: ProjectsInfoComponent, canActivate: [AuthGuard] },
+    { path: routesNames.projectsList,   component: ProjectsListComponent, canActivate: [AuthGuard] },
 
   // otherwise redirect to 404
   { path: '**', redirectTo: RoutesConfig.routes.error404 }

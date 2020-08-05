@@ -1,0 +1,47 @@
+<app-container title="Liste des projets possibles" [navLeft]="navLeft">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="label">
+        <th mat-header-cell *matHeaderCellDef>Label</th>
+        <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+      </ng-container>
+  
+      <!-- Phone number Column -->
+      <ng-container matColumnDef="start_date">
+        <th mat-header-cell *matHeaderCellDef>Date de début</th>
+        <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
+      </ng-container>
+  
+      <!-- Mail Column -->
+      <ng-container matColumnDef="start_end">
+        <th mat-header-cell *matHeaderCellDef>Date de fin</th>
+        <td mat-cell *matCellDef="let element"> {{element.start_end}} </td>
+      </ng-container>
+  
+      <!-- Mail Column -->
+      <ng-container matColumnDef="contact">
+        <th mat-header-cell *matHeaderCellDef>Contact</th>
+        <td mat-cell *matCellDef="let element"></td>
+      </ng-container>
+  
+      <!-- City Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="th-actions"> Action </th>
+        <td mat-cell *matCellDef="let element" class="td-actions">
+          <div class="actions-ctner">
+            <fa-icon [icon]="faPen" [routerLink]="updateProjectRoute.replace(':id', element.id)"></fa-icon>
+            <fa-icon [icon]="faTrash" (click)="onDelete(element.id)"></fa-icon>
+            <fa-icon [icon]="faInfo" [routerLink]="infoProjectRoute.replace(':id', element.id)"></fa-icon>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</app-container>

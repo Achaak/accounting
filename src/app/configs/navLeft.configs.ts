@@ -19,6 +19,17 @@ export default {
           link: RoutesConfig.routes.contactsNew
         }
       ]
+    }, {
+      label: "Projects",
+      nav: [
+        {
+          label: "Liste des projets possibles",
+          link: RoutesConfig.routes.projectsList
+        }, {
+          label: "Ajouter un projet possible",
+          link: RoutesConfig.routes.projectsNew
+        }
+      ]
     }
   ],
   finances: [

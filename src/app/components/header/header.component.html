@@ -29,7 +29,12 @@
       </div>
     
       <div class="col-4 block-right">
-        <div class="profil">
+        <nav>
+          <ul>
+            <li (click)="onLogout()">Se déconnecter</li>
+          </ul>
+        </nav>
+        <div class="profil" *ngIf="false">
           <div class="profil-picture"></div>
           
           <ul class="profil-nav">

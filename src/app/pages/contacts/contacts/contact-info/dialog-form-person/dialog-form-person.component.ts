@@ -36,6 +36,7 @@ export class DialogFormPersonComponent implements OnInit {
       firstname:     [this.firstname],
       lastname:      [this.lastname],
       linkedin_link: [this.linkedin_link],
+      contact:       [this.idContact],
     });
   }
 

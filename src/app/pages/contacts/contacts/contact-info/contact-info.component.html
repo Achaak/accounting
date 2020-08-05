@@ -79,13 +79,13 @@
       <div class="col-12">
         <div class="row" *ngFor="let payment of contact.contact_people">
           <div class="col-sm-3">
-            <span>{{ payment.label }}</span>
+            <span>{{ payment.firstname }}</span>
           </div>
           <div class="col-sm-3">
-            <span>{{ payment.amount }} €</span>
+            <span>{{ payment.lastname }}</span>
           </div>
           <div class="col-sm-3">
-            <span>{{ payment.date }}</span>
+            <span>{{ payment.linkedin_link }}</span>
           </div>
           <div class="col-sm-3">
             <fa-icon [icon]="faPen" (click)="onUpdatePerson(payment.id)"></fa-icon>

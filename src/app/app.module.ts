@@ -13,6 +13,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component'
 import { AuthService } from './services/user/auth.service';
 import { UserService } from './services/user/user.service';
+import { ProjectsService } from './services/projects/projects.service';
 import { ContactsService } from './services/contacts/contacts.service';
 import { TaxesService } from './services/taxes/taxes.service';
 import { BillsService } from './services/bills/bills.service';
@@ -43,6 +44,9 @@ import { CardComponent } from './components/card/card.component';
 import { ContactsListComponent } from './pages/contacts/contacts/contacts-list/contacts-list.component';
 import { ContactsRegularListComponent } from './pages/contacts/contacts/contacts-regular-list/contacts-regular-list.component';
 import { DialogFormPersonComponent } from './pages/contacts/contacts/contact-info/dialog-form-person/dialog-form-person.component';
+import { ProjectsListComponent } from './pages/contacts/projects/projects-list/projects-list.component';
+import { ProjectsFormComponent } from './pages/contacts/projects/projects-form/projects-form.component';
+import { ProjectsInfoComponent } from './pages/contacts/projects/projects-info/projects-info.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,9 @@ import { DialogFormPersonComponent } from './pages/contacts/contacts/contact-inf
     ContactsListComponent,
     ContactsRegularListComponent,
     DialogFormPersonComponent,
+    ProjectsListComponent,
+    ProjectsFormComponent,
+    ProjectsInfoComponent,
   ],
   entryComponents: [
     DialogComponent,
@@ -97,6 +104,7 @@ import { DialogFormPersonComponent } from './pages/contacts/contacts/contact-inf
     ContactsService,
     TaxesService,
     BillsService,
+    ProjectsService,
   ],
   bootstrap: [AppComponent]
 })

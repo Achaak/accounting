@@ -1,0 +1,47 @@
+<app-container [navLeft]="navLeft" title="Formulaire de projet">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="row">
+            <div class="col-12">
+              <p class="message-alert">{{ messageAlert }}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="label">Label</label>
+                <input type="text" id="label" name="label" ngModel [(ngModel)]="project.label" required>
+              </div>
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="start_date">Date de début</label>
+                <input type="date" id="start_date" name="start_date" ngModel [(ngModel)]="project.start_date">
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="end_date">Date de fin</label>
+                <input type="date" id="end_date" name="end_date" ngModel [(ngModel)]="project.end_date">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-8">
+              <input type="submit" [value]="submitText" [disabled]="f.invalid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-container>
