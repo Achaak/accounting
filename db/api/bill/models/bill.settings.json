@@ -34,6 +34,9 @@
     "bill_payments": {
       "collection": "bill-payment",
       "via": "bill"
+    },
+    "contact": {
+      "model": "contacts"
     }
   }
 }
