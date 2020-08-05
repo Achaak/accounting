@@ -5,7 +5,7 @@ import { BillsService } from 'src/app/services/bills/bills.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
-import { ClientsService } from 'src/app/services/clients/clients.service';
+import { ContactsService } from 'src/app/services/contacts/contacts.service';
 
 @Component({
   selector: 'app-bill-form',
@@ -34,7 +34,7 @@ export class BillFormComponent implements OnInit {
 
   submitText: String
 
-  constructor(private clientsService: ClientsService, private billsService: BillsService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private contactsService: ContactsService, private billsService: BillsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.idBill = this.route.snapshot.params['id'];
@@ -71,9 +71,9 @@ export class BillFormComponent implements OnInit {
   }
 
   async initClient() {
-    await this.clientsService.init()
+    await this.contactsService.init()
 
-    this.clients = this.clientsService.getClients()
+    this.clients = this.contactsService.getContacts()
   }
 
   initSubmitText() {

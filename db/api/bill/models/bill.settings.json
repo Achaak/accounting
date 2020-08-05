@@ -9,9 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "client": {
-      "model": "client"
-    },
     "discount": {
       "type": "float"
     },

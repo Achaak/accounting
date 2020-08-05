@@ -1,11 +1,11 @@
-<app-container [navLeft]="navLeft" title="Information de client">
+<app-container [navLeft]="navLeft" title="Information de contact">
   <div class="container-fluid">
 
     <div class="row">
       <div class="col-sm-4">
         <div class="input-group">
           <label for="name">Nom / Entreprise</label>
-          <span class="client-value">{{ client.name || '---' }}</span>
+          <span class="contact-value">{{ contact.name || '---' }}</span>
         </div>
       </div>
     </div>
@@ -14,21 +14,21 @@
       <div class="col-sm-4">
         <div class="input-group">
           <label for="address">Adresse</label>
-          <span class="client-value">{{ client.address || '---' }}</span>
+          <span class="contact-value">{{ contact.address || '---' }}</span>
         </div>
       </div>
 
       <div class="col-sm-4">
         <div class="input-group">
           <label for="postal_code">Code postal</label>
-          <span class="client-value">{{ client.postal_code || '---' }}</span>
+          <span class="contact-value">{{ contact.postal_code || '---' }}</span>
         </div>
       </div>
       
       <div class="col-sm-4">
         <div class="input-group">
           <label for="city">Ville</label>
-          <span class="client-value">{{ client.city || '---' }}</span>
+          <span class="contact-value">{{ contact.city || '---' }}</span>
         </div>
       </div>
     </div>
@@ -37,15 +37,15 @@
       <div class="col-sm-6">
         <div class="input-group">
           <label for="phone_number">Numéro de téléphone</label>
-          <span class="client-value">{{ client.phone_number || '---' }}</span>
+          <span class="contact-value">{{ contact.phone_number || '---' }}</span>
         </div>
       </div>
         
       <div class="col-sm-6">
         <div class="input-group">
           <label for="mail">Mail</label>
-          <span class="client-value" *ngIf="client.mail"><a href="mailto:{{client.mail}}">{{ client.mail }}</a></span>
-          <span class="client-value" *ngIf="!client.mail">---</span>
+          <span class="contact-value" *ngIf="contact.mail"><a href="mailto:{{contact.mail}}">{{ contact.mail }}</a></span>
+          <span class="contact-value" *ngIf="!contact.mail">---</span>
         </div>
       </div>
     </div>
@@ -54,8 +54,8 @@
       <div class="col-sm-6">
         <div class="input-group">
           <label for="website_link">Site web</label>
-          <span class="client-value" *ngIf="client.website_link"><a [href]="client.website_link">{{ client.website_link }}</a></span>
-          <span class="client-value" *ngIf="!client.website_link">---</span>
+          <span class="contact-value" *ngIf="contact.website_link"><a [href]="contact.website_link">{{ contact.website_link }}</a></span>
+          <span class="contact-value" *ngIf="!contact.website_link">---</span>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
       <div class="col-12">
         <div class="input-group">
           <label for="note">Note</label>
-          <span class="client-value">{{ client.note || '---' }}</span>
+          <span class="contact-value">{{ contact.note || '---' }}</span>
         </div>
       </div>
     </div>

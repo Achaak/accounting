@@ -1,16 +1,22 @@
 import { RoutesConfig } from './routes.configs'
 
 export default {
-  clients: [
+  contacts: [
     {
-      label: "Clients",
+      label: "Contact",
       nav: [
         {
           label: "Liste des clients",
-          link: RoutesConfig.routes.clientList
+          link: RoutesConfig.routes.contactsClientsList
         }, {
-          label: "Ajouter un client",
-          link: RoutesConfig.routes.clientNew
+          label: "Liste des contacts",
+          link: RoutesConfig.routes.contactsList
+        }, {
+          label: "Liste des contacts réguliés",
+          link: RoutesConfig.routes.contactsRegularList
+        }, {
+          label: "Ajouter un contact",
+          link: RoutesConfig.routes.contactsNew
         }
       ]
     }

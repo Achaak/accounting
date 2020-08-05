@@ -1,20 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table'
-import navLeftConfigs from 'src/app/configs/navLeft.configs';
-import { ClientsService } from 'src/app/services/clients/clients.service';
-import { Subscription } from 'rxjs';
-import { faPen, faTrash, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { ContactsService } from 'src/app/services/contacts/contacts.service';
 import { MatDialog } from '@angular/material/dialog';
-import { RoutesConfig } from './../../../../configs/routes.configs'
+import { MatPaginator } from '@angular/material/paginator';
+import { RoutesConfig } from 'src/app/configs/routes.configs';
+import navLeftConfigs from 'src/app/configs/navLeft.configs';
+import { Subscription } from 'rxjs';
+import { faTrash, faPen, faInfo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-client-list',
-  templateUrl: './client-list.component.html',
-  styleUrls: ['./client-list.component.sass']
+  selector: 'app-contacts-list',
+  templateUrl: './contacts-list.component.html',
+  styleUrls: ['./contacts-list.component.sass']
 })
-export class ClientListComponent implements OnInit {
+export class ContactsListComponent implements OnInit {
   // Font awesome
   faPen = faPen
   faTrash = faTrash
@@ -24,8 +24,8 @@ export class ClientListComponent implements OnInit {
   clients: any[]
   clientsSubscription: Subscription
 
-  updateClientRoute = RoutesConfig.routes.clientUpdate
-  infoClientRoute = RoutesConfig.routes.clientInfo
+  updateClientRoute = RoutesConfig.routes.contactUpdate
+  infoClientRoute = RoutesConfig.routes.contactInfo
 
   // Table
   displayedColumns: string[] = ['name', 'phone_number', 'mail', "website_link", 'city', 'actions'];
@@ -33,9 +33,9 @@ export class ClientListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   // Nav left
-  navLeft = navLeftConfigs.clients
+  navLeft = navLeftConfigs.contacts
 
-  constructor(private clientsService: ClientsService, public dialog: MatDialog) { }
+  constructor(private contactsService: ContactsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -44,15 +44,15 @@ export class ClientListComponent implements OnInit {
   }
 
   async initClients() {
-    await this.clientsService.init()
+    await this.contactsService.init()
 
-    this.clientsSubscription = this.clientsService.clientsSubject.subscribe(
-      (clients: any) => {
-        this.dataSource = new MatTableDataSource<PeriodicElement>(clients);
+    this.clientsSubscription = this.contactsService.contactsSubject.subscribe(
+      (contacts: any) => {
+        this.dataSource = new MatTableDataSource<PeriodicElement>(contacts);
         this.dataSource.paginator = this.paginator;
       }
     )
-    this.clientsService.emitClientsSubject()
+    this.contactsService.emitContactsSubject()
   }
 
   onDelete(idClient) {
@@ -66,7 +66,7 @@ export class ClientListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       if(!result) return false
 
-      const response = await this.clientsService.deleteClient(idClient)
+      const response = await this.contactsService.deleteContact(idClient)
     })
   }
 }

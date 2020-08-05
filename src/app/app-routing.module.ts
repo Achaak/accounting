@@ -5,16 +5,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuard } from './services/user/auth.guard.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ClientsComponent } from './pages/clients/clients.component';
+import { ContactsComponent } from './pages/contacts/contacts.component';
 import { FinancesComponent } from './pages/finances/finances.component';
 import { TaxFormComponent } from './pages/finances/taxes/tax-form/tax-form.component';
 import { TaxListComponent } from './pages/finances/taxes/tax-list/tax-list.component';
 import { BillFormComponent } from './pages/finances/bills/bill-form/bill-form.component';
 import { BillListComponent } from './pages/finances/bills/bill-list/bill-list.component';
 import { BillInfoComponent } from './pages/finances/bills/bill-info/bill-info.component';
-import { ClientFormComponent } from './pages/clients/clients/client-form/client-form.component';
-import { ClientListComponent } from './pages/clients/clients/client-list/client-list.component';
-import { ClientInfoComponent } from './pages/clients/clients/client-info/client-info.component';
+import { ContactFormComponent } from './pages/contacts/contacts/contact-form/contact-form.component';
+import { ContactsListComponent } from './pages/contacts/contacts/contacts-list/contacts-list.component';
+import { ContactInfoComponent } from './pages/contacts/contacts/contact-info/contact-info.component';
+import { ClientsListComponent } from './pages/contacts/contacts/clients-list/clients-list.component';
+import { ContactsRegularListComponent } from './pages/contacts/contacts/contacts-regular-list/contacts-regular-list.component';
 
 const routesNames = RoutesConfig.routesNames;
 
@@ -34,11 +36,13 @@ const routes: Routes = [
   { path: routesNames.billList,   component: BillListComponent, canActivate: [AuthGuard] },
   { path: routesNames.billInfo,   component: BillInfoComponent, canActivate: [AuthGuard] },
 
-  { path: routesNames.clients,      component: ClientsComponent,    canActivate: [AuthGuard] },
-  { path: routesNames.clientNew,    component: ClientFormComponent, canActivate: [AuthGuard] },
-  { path: routesNames.clientUpdate, component: ClientFormComponent, canActivate: [AuthGuard] },
-  { path: routesNames.clientList,   component: ClientListComponent, canActivate: [AuthGuard] },
-  { path: routesNames.clientInfo,   component: ClientInfoComponent, canActivate: [AuthGuard] },
+  { path: routesNames.contacts,                component: ContactsComponent,              canActivate: [AuthGuard] },
+  { path: routesNames.contactsNew,             component: ContactFormComponent,           canActivate: [AuthGuard] },
+  { path: routesNames.contactsUpdate,          component: ContactFormComponent,           canActivate: [AuthGuard] },
+  { path: routesNames.contactsInfo,            component: ContactInfoComponent,           canActivate: [AuthGuard] },
+  { path: routesNames.contactsList,            component: ContactsListComponent,          canActivate: [AuthGuard] },
+  { path: routesNames.contactsClientsList,     component: ClientsListComponent,           canActivate: [AuthGuard] },
+  { path: routesNames.contactsRegularList,   component: ContactsRegularListComponent, canActivate: [AuthGuard] },
 
   // otherwise redirect to 404
   { path: '**', redirectTo: RoutesConfig.routes.error404 }

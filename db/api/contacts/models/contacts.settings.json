@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "clients",
+  "collectionName": "contacts",
   "info": {
-    "name": "client"
+    "name": "Contacts"
   },
   "options": {
     "increments": true,
@@ -10,8 +10,7 @@
   },
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "address": {
       "type": "string"
@@ -33,6 +32,12 @@
     },
     "note": {
       "type": "richtext"
+    },
+    "isClient": {
+      "type": "boolean"
+    },
+    "isContactRegulated": {
+      "type": "boolean"
     }
   }
 }

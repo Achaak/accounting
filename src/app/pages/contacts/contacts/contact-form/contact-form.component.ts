@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import navLeftConfigs from 'src/app/configs/navLeft.configs';
 import { NgForm } from '@angular/forms';
-import { ClientsService } from 'src/app/services/clients/clients.service';
+import { ContactsService } from 'src/app/services/contacts/contacts.service';
 import { ActivatedRoute } from '@angular/router';
 import { DialogComponent } from './../../../../components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-client-form',
-  templateUrl: './client-form.component.html',
-  styleUrls: ['./client-form.component.sass']
+  selector: 'app-contact-form',
+  templateUrl: './contact-form.component.html',
+  styleUrls: ['./contact-form.component.sass']
 })
-export class ClientFormComponent implements OnInit {
+export class ContactFormComponent implements OnInit {
   
-  navLeft = navLeftConfigs.clients
+  navLeft = navLeftConfigs.contacts
 
   messageAlert: String
 
-  idClient = null
-  client = {
+  idContact = null
+  contact = {
     name: undefined,
     address: undefined,
     postal_code: undefined,
@@ -31,12 +31,12 @@ export class ClientFormComponent implements OnInit {
 
   submitText: String
 
-  constructor(private clientsService: ClientsService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private contactsService: ContactsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.idClient = this.route.snapshot.params['id'];
+    this.idContact = this.route.snapshot.params['id'];
 
-    if(this.idClient) this.initClient()
+    if(this.idContact) this.initContact()
 
     this.initSubmitText()
   }
@@ -53,22 +53,22 @@ export class ClientFormComponent implements OnInit {
       note:         form.value['note'] || null,
     }
 
-    if(this.idClient) this.updateClient(values)
-    else this.newClient(values)
+    if(this.idContact) this.updateContact(values)
+    else this.newContact(values)
   }
 
-  async initClient() {
-    await this.clientsService.init()
+  async initContact() {
+    await this.contactsService.init()
 
-    this.client = await this.clientsService.getClientById(this.idClient)
+    this.contact = await this.contactsService.getContactById(this.idContact)
   }
 
   initSubmitText() {
-    if(this.idClient) this.submitText = "Modifier"
+    if(this.idContact) this.submitText = "Modifier"
     else this.submitText = "Ajouter"
   }
  
-  newClient(values) {
+  newContact(values) {
     let dialogRef = this.dialog.open(DialogComponent, {
       data: {
         title: "Êtes-vous certain des données entrées ?",
@@ -79,13 +79,13 @@ export class ClientFormComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       if(!result) return false
 
-      const response = await this.clientsService.addClient(values)
+      const response = await this.contactsService.addContact(values)
   
       this.messageAlert = response.message
     })
   }
 
-  updateClient(values) {
+  updateContact(values) {
     let dialogRef = this.dialog.open(DialogComponent, {
       data: {
         title: "Êtes-vous certain des données entrées ?",
@@ -96,7 +96,7 @@ export class ClientFormComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       if(!result) return false
 
-      const response = await this.clientsService.updateClient(values, this.idClient)
+      const response = await this.contactsService.updateContact(values, this.idContact)
   
       this.messageAlert = response.message
     })

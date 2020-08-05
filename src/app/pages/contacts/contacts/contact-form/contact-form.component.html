@@ -1,4 +1,4 @@
-<app-container title="Formulaire client" [navLeft]="navLeft">
+<app-container title="Formulaire contact" [navLeft]="navLeft">
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="container-fluid">
 
@@ -14,7 +14,21 @@
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="name">Nom / Entreprise</label>
-                <input type="text" id="name" name="name" ngModel [(ngModel)]="client.name" required>
+                <input type="text" id="name" name="name" ngModel [(ngModel)]="contact.name" required>
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="client">Clients</label>
+                <mat-checkbox id="client" name="client" ngModel></mat-checkbox>
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="contact_regular">Contact régulier</label>
+                <mat-checkbox id="contact_regular" name="contact_regular" ngModel></mat-checkbox>
               </div>
             </div>
           </div>
@@ -23,21 +37,21 @@
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="address">Adresse</label>
-                <input type="text" id="address" name="address" [(ngModel)]="client.address" ngModel>
+                <input type="text" id="address" name="address" [(ngModel)]="contact.address" ngModel>
               </div>
             </div>
 
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="postal_code">Code postal</label>
-                <input type="text" id="postal_code" name="postal_code" [(ngModel)]="client.postal_code" ngModel>
+                <input type="text" id="postal_code" name="postal_code" [(ngModel)]="contact.postal_code" ngModel>
               </div>
             </div>
             
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="city">Ville</label>
-                <input type="text" id="city" name="city" [(ngModel)]="client.city" ngModel>
+                <input type="text" id="city" name="city" [(ngModel)]="contact.city" ngModel>
               </div>
             </div>
           </div>
@@ -46,14 +60,14 @@
             <div class="col-12 col-lg-6">
               <div class="input-group">
                 <label for="phone_number">Numéro de téléphone</label>
-                <input type="text" id="phone_number" name="phone_number" [(ngModel)]="client.phone_number" ngModel>
+                <input type="text" id="phone_number" name="phone_number" [(ngModel)]="contact.phone_number" ngModel>
               </div>
             </div>
               
             <div class="col-12 col-lg-6">
               <div class="input-group">
                 <label for="mail">Mail</label>
-                <input type="email" id="mail" name="mail" [(ngModel)]="client.mail" ngModel email>
+                <input type="email" id="mail" name="mail" [(ngModel)]="contact.mail" ngModel email>
               </div>
             </div>
           </div>
@@ -62,7 +76,7 @@
             <div class="col-12 col-lg-6">
               <div class="input-group">
                 <label for="website_link">Site web</label>
-                <input type="text" id="website_link" name="website_link" [(ngModel)]="client.website_link" ngModel>
+                <input type="text" id="website_link" name="website_link" [(ngModel)]="contact.website_link" ngModel>
               </div>
             </div>
           </div>
@@ -71,7 +85,7 @@
             <div class="col-12">
               <div class="input-group">
                 <label for="note">Note</label>
-                <textarea id="note" name="note" [(ngModel)]="client.note" ngModel></textarea>
+                <textarea id="note" name="note" [(ngModel)]="contact.note" ngModel></textarea>
               </div>
             </div>
           </div>

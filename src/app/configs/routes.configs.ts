@@ -16,11 +16,13 @@ const routesNames = {
   billList:  "bill/list",
   billInfo:  'bill/info/:id',
 
-  clients:      'clients',
-  clientNew:    'client/new',
-  clientUpdate: 'client/update/:id',
-  clientList:   'client/list',
-  clientInfo:   'client/info/:id',
+  contacts:              'contacts',
+  contactsNew:           'contacts/new',
+  contactsUpdate:        'contacts/update/:id',
+  contactsInfo:          'contacts/info/:id',
+  contactsList:          'contacts/list',
+  contactsClientsList:   'contacts/clients/list',
+  contactsRegularList: 'contacts/regular/list',
 };
 
 export const RoutesConfig: any = {
@@ -39,10 +41,12 @@ export const RoutesConfig: any = {
     billList:   `/${routesNames.billList}`,
     billInfo:   `/${routesNames.billInfo}`,
 
-    clients:      `/${routesNames.clients}`,
-    clientNew:    `/${routesNames.clientNew}`,
-    clientUpdate: `/${routesNames.clientUpdate}`,
-    clientList:   `/${routesNames.clientList}`,
-    clientInfo:   `/${routesNames.clientInfo}`,
+    contacts:              `/${routesNames.contacts}`,
+    contactsNew:           `/${routesNames.contactsNew}`,
+    contactsUpdate:        `/${routesNames.contactsUpdate}`,
+    contactsInfo:          `/${routesNames.contactsInfo}`,
+    contactsClientsList:   `/${routesNames.contactsClientsList}`,
+    contactsList:          `/${routesNames.contactsList}`,
+    contactsRegularList: `/${routesNames.contactsRegularList}`,
   }
 };

@@ -1,59 +1,59 @@
-import { Clients } from './../API'
+import { Contacts } from './../API'
 import { AuthService } from '../user/auth.service';
 import { Subject } from 'rxjs';
 import _ from 'lodash'
 
-export class ClientsService {
-  clientsSubject = new Subject<any[]>();
+export class ContactsService {
+  contactsSubject = new Subject<any[]>();
 
-  private clients = []
+  private contacts = []
 
   constructor(private authService: AuthService) {}
 
   async init() {
-    if (!this.clients.length)
-      await this.loadClients()
+    if (!this.contacts.length)
+      await this.loadContacts()
   }
 
-  emitClientsSubject() {
-    this.clientsSubject.next(this.clients.slice())
+  emitContactsSubject() {
+    this.contactsSubject.next(this.contacts.slice())
   }
 
-  async loadClients() {
+  async loadContacts() {
     let status
 
-    const func = await Clients.getClients(await this.authService.getJwtToken())
+    const func = await Contacts.getContacts(await this.authService.getJwtToken())
 
     // Get status
     status = func.status
 
     // If error
     if(func.status === 200) {
-      this.clients = func.data
-      this.emitClientsSubject();
+      this.contacts = func.data
+      this.emitContactsSubject();
     }
   }
 
-  async getClientById(id) {
-    return _.find(this.clients, { id: parseInt(id) })
+  async getContactById(id) {
+    return _.find(this.contacts, { id: parseInt(id) })
   }
 
-  getClients() {
-    return this.clients
+  getContacts() {
+    return this.contacts
   }
 
-  async addClient(values) {
+  async addContact(values) {
     let message
     let status
 
-    const func = await Clients.setClient(this.authService.jwtToken, values)
+    const func = await Contacts.setContact(this.authService.jwtToken, values)
 
     // Get status
     status = func.status
 
     // If error
     if(func.status === 200) {
-      this.loadClients()
+      this.loadContacts()
     }
     else {
       message = "Les champs comportants * doivent être remplis"
@@ -65,18 +65,18 @@ export class ClientsService {
     }
   }
 
-  async updateClient(values, idClient) {
+  async updateContact(values, idContact) {
     let message
     let status
 
-    const func = await Clients.updateClient(this.authService.jwtToken, idClient, values)
+    const func = await Contacts.updateContact(this.authService.jwtToken, idContact, values)
 
     // Get status
     status = func.status
 
     // If error
     if(func.status === 200) {
-      this.loadClients()
+      this.loadContacts()
     }
     else {
       message = "Les champs comportants * doivent être remplis"
@@ -88,17 +88,17 @@ export class ClientsService {
     }
   }
 
-  async deleteClient(idClient) {
+  async deleteContact(idContact) {
     let status
 
-    const func = await Clients.deleteClient(this.authService.jwtToken, idClient)
+    const func = await Contacts.deleteContact(this.authService.jwtToken, idContact)
 
     // Get status
     status = func.status
 
     // If error
     if(func.status === 200) {
-      this.loadClients()
+      this.loadContacts()
     }
 
     return {

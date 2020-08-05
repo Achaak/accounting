@@ -12,8 +12,8 @@ export class HeaderComponent implements OnInit {
 
   nav = [
     {
-      label: "Clients",
-      link: RoutesConfig.routes.clients
+      label: "Contacts",
+      link: RoutesConfig.routes.contacts
     }, {
       label: "Finances",
       link: RoutesConfig.routes.finances
