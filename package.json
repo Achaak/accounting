@@ -6,7 +6,7 @@
     "i": "npm i && cd db && npm i",
     "start": "concurrently \"lite-server --baseDir .\\dist\\my-app\" \"cd db && npm run start\"",
     "develop": "concurrently \"ng serve\" \"cd db && npm run develop\"",
-    "build": "ng build --prod && cd db && npm run build\"",
+    "build": "ng build --prod && cd db && npm run build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
