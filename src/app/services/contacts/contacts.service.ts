@@ -1,4 +1,4 @@
-import { Contacts } from './../API'
+import { Contacts, ContactPeople } from './../API'
 import { AuthService } from '../user/auth.service';
 import { Subject } from 'rxjs';
 import _ from 'lodash'
@@ -45,6 +45,7 @@ export class ContactsService {
   async addContact(values) {
     let message
     let status
+    let data
 
     const func = await Contacts.setContact(this.authService.jwtToken, values)
 
@@ -53,7 +54,9 @@ export class ContactsService {
 
     // If error
     if(func.status === 200) {
-      this.loadContacts()
+      data = func.data
+      this.contacts.push(func.data)
+      this.emitContactsSubject()
     }
     else {
       message = "Les champs comportants * doivent être remplis"
@@ -61,7 +64,8 @@ export class ContactsService {
 
     return {
       message: message,
-      status: status
+      status: status,
+      data: data
     }
   }
 
@@ -92,6 +96,70 @@ export class ContactsService {
     let status
 
     const func = await Contacts.deleteContact(this.authService.jwtToken, idContact)
+
+    // Get status
+    status = func.status
+
+    // If error
+    if(func.status === 200) {
+      this.loadContacts()
+    }
+
+    return {
+      status: status
+    }
+  }
+
+  async addContactPerson(values) {
+    let message
+    let status
+
+    const func = await ContactPeople.setContactPerson(this.authService.jwtToken, values)
+
+    // Get status
+    status = func.status
+
+    // If error
+    if(func.status === 200) {
+      this.loadContacts()
+    }
+    else {
+      message = "Les champs comportants * doivent être remplis"
+    }
+
+    return {
+      message: message,
+      status: status
+    }
+  }
+
+  async updateContactPerson(values, idPerson) {
+    let message
+    let status
+
+    const func = await ContactPeople.updateContactPerson(this.authService.jwtToken, idPerson, values)
+
+    // Get status
+    status = func.status
+
+    // If error
+    if(func.status === 200) {
+      this.loadContacts()
+    }
+    else {
+      message = "Les champs comportants * doivent être remplis"
+    }
+
+    return {
+      message: message,
+      status: status
+    }
+  }
+  
+  async deleteContactPerson(idPerson) {
+    let status
+
+    const func = await ContactPeople.deleteContactPerson(this.authService.jwtToken, idPerson)
 
     // Get status
     status = func.status

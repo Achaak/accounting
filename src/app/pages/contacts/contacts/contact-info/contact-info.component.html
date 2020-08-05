@@ -1,4 +1,4 @@
-<app-container [navLeft]="navLeft" title="Information de contact">
+<app-container [navLeft]="navLeft" title="Information du contact">
   <div class="container-fluid">
 
     <div class="row">
@@ -65,6 +65,32 @@
         <div class="input-group">
           <label for="note">Note</label>
           <span class="contact-value">{{ contact.note || '---' }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <h3>Personnes</h3>
+
+      <div class="col-12">
+        <button (click)="addPerson()">Ajouter une personne</button>
+      </div>
+
+      <div class="col-12">
+        <div class="row" *ngFor="let payment of contact.contact_people">
+          <div class="col-sm-3">
+            <span>{{ payment.label }}</span>
+          </div>
+          <div class="col-sm-3">
+            <span>{{ payment.amount }} €</span>
+          </div>
+          <div class="col-sm-3">
+            <span>{{ payment.date }}</span>
+          </div>
+          <div class="col-sm-3">
+            <fa-icon [icon]="faPen" (click)="onUpdatePerson(payment.id)"></fa-icon>
+            <fa-icon [icon]="faTrash" (click)="onDeletePerson(payment.id)"></fa-icon>
+          </div>
         </div>
       </div>
     </div>

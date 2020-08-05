@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_people",
+  "info": {
+    "name": "contact_person"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "linkedin_link": {
+      "type": "string"
+    },
+    "contact": {
+      "via": "contact_people",
+      "model": "contacts"
+    }
+  }
+}

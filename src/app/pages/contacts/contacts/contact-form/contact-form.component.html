@@ -21,14 +21,14 @@
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="client">Clients</label>
-                <mat-checkbox id="client" name="client" ngModel></mat-checkbox>
+                <mat-checkbox id="client" name="client" ngModel [(ngModel)]="contact.isClient"></mat-checkbox>
               </div>
             </div>
             
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="contact_regular">Contact régulier</label>
-                <mat-checkbox id="contact_regular" name="contact_regular" ngModel></mat-checkbox>
+                <mat-checkbox id="contact_regular" name="contact_regular" ngModel [(ngModel)]="contact.isContactRegulated"></mat-checkbox>
               </div>
             </div>
           </div>

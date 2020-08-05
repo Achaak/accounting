@@ -42,6 +42,7 @@ import { BillListInfoComponent } from './pages/finances/bills/bill-list/bill-lis
 import { CardComponent } from './components/card/card.component';
 import { ContactsListComponent } from './pages/contacts/contacts/contacts-list/contacts-list.component';
 import { ContactsRegularListComponent } from './pages/contacts/contacts/contacts-regular-list/contacts-regular-list.component';
+import { DialogFormPersonComponent } from './pages/contacts/contacts/contact-info/dialog-form-person/dialog-form-person.component';
 
 @NgModule({
   declarations: [
@@ -68,10 +69,12 @@ import { ContactsRegularListComponent } from './pages/contacts/contacts/contacts
     CardComponent,
     ContactsListComponent,
     ContactsRegularListComponent,
+    DialogFormPersonComponent,
   ],
   entryComponents: [
     DialogComponent,
     DialogFormPaymentComponent,
+    DialogFormPersonComponent,
   ],
   imports: [
     BrowserModule,

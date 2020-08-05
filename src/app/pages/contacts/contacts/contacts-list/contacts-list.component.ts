@@ -24,8 +24,8 @@ export class ContactsListComponent implements OnInit {
   clients: any[]
   clientsSubscription: Subscription
 
-  updateClientRoute = RoutesConfig.routes.contactUpdate
-  infoClientRoute = RoutesConfig.routes.contactInfo
+  updateClientRoute = RoutesConfig.routes.contactsUpdate
+  infoClientRoute = RoutesConfig.routes.contactsInfo
 
   // Table
   displayedColumns: string[] = ['name', 'phone_number', 'mail', "website_link", 'city', 'actions'];

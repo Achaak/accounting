@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import navLeftConfigs from 'src/app/configs/navLeft.configs';
 import { NgForm } from '@angular/forms';
 import { ContactsService } from 'src/app/services/contacts/contacts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogComponent } from './../../../../components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -27,11 +27,18 @@ export class ContactFormComponent implements OnInit {
     mail: undefined,
     website_link: undefined,
     note: undefined,
+    isClient: undefined,
+    isContactRegulated: undefined,
   }
 
   submitText: String
 
-  constructor(private contactsService: ContactsService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(
+    private contactsService: ContactsService,
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.idContact = this.route.snapshot.params['id'];
@@ -42,15 +49,18 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(form.value)
     const values = {
-      name:         form.value['name'] || null,
-      address:      form.value['address'] || null,
-      postal_code:  form.value['postal_code'] || null,
-      city:         form.value['city'] || null,
-      phone_number: form.value['phone_number'] || null,
-      mail:         form.value['mail'] || null,
-      website_link: form.value['website_link'] || null,
-      note:         form.value['note'] || null,
+      name:               form.value['name']            || null,
+      address:            form.value['address']         || null,
+      postal_code:        form.value['postal_code']     || null,
+      city:               form.value['city']            || null,
+      phone_number:       form.value['phone_number']    || null,
+      mail:               form.value['mail']            || null,
+      website_link:       form.value['website_link']    || null,
+      note:               form.value['note']            || null,
+      isClient:           form.value['client']          || null,
+      isContactRegulated: form.value['contact_regular'] || null,
     }
 
     if(this.idContact) this.updateContact(values)
@@ -80,7 +90,11 @@ export class ContactFormComponent implements OnInit {
       if(!result) return false
 
       const response = await this.contactsService.addContact(values)
-  
+
+      if(response.status === 200) {
+        this.router.navigate([`contacts/info/${response.data.id}`])
+      }
+      
       this.messageAlert = response.message
     })
   }

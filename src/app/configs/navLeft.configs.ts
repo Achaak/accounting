@@ -6,11 +6,11 @@ export default {
       label: "Contact",
       nav: [
         {
-          label: "Liste des clients",
-          link: RoutesConfig.routes.contactsClientsList
-        }, {
           label: "Liste des contacts",
           link: RoutesConfig.routes.contactsList
+        }, {
+          label: "Liste des contacts clients",
+          link: RoutesConfig.routes.contactsClientsList
         }, {
           label: "Liste des contacts réguliés",
           link: RoutesConfig.routes.contactsRegularList

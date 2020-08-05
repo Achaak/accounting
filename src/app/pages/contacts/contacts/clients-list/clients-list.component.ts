@@ -24,8 +24,8 @@ export class ClientsListComponent implements OnInit {
   clients: any[]
   clientsSubscription: Subscription
 
-  updateClientRoute = RoutesConfig.routes.contactUpdate
-  infoClientRoute = RoutesConfig.routes.contactInfo
+  updateClientRoute = RoutesConfig.routes.contactsUpdate
+  infoClientRoute = RoutesConfig.routes.contactsInfo
 
   // Table
   displayedColumns: string[] = ['name', 'phone_number', 'mail', "website_link", 'city', 'actions'];
@@ -48,7 +48,11 @@ export class ClientsListComponent implements OnInit {
 
     this.clientsSubscription = this.contactsService.contactsSubject.subscribe(
       (contacts: any) => {
-        this.dataSource = new MatTableDataSource<PeriodicElement>(contacts);
+        // Filter
+        const contactsTmp = contacts.filter((item) => item.isClient)
+
+        // Add contacts
+        this.dataSource = new MatTableDataSource<PeriodicElement>(contactsTmp);
         this.dataSource.paginator = this.paginator;
       }
     )

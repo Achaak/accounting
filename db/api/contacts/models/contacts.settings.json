@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "contacts",
+  "collectionName": "contact",
   "info": {
-    "name": "Contacts"
+    "name": "Contact"
   },
   "options": {
     "increments": true,
@@ -38,6 +38,10 @@
     },
     "isContactRegulated": {
       "type": "boolean"
+    },
+    "contact_people": {
+      "collection": "contact-person",
+      "via": "contact"
     }
   }
 }
