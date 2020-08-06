@@ -13,8 +13,17 @@
           <div class="row">
             <div class="col-12 col-lg-4">
               <div class="input-group">
-                <label for="label">Label</label>
+                <label for="label">Label *</label>
                 <input type="text" id="label" name="label" ngModel [(ngModel)]="project.label" required>
+              </div>
+            </div>
+            
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <label for="contact">Contact</label>
+                <select id="contact" name="contact" ngModel [(ngModel)]="project.contact && project.contact.id">
+                  <option value="{{contact.id}}" *ngFor="let contact of contacts">{{contact.name}}</option>
+                </select>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { ContactsService } from 'src/app/services/contacts/contacts.service';
 
 @Component({
   selector: 'app-projects-form',
@@ -22,12 +23,16 @@ export class ProjectsFormComponent implements OnInit {
     label: undefined,
     start_date: undefined,
     end_date: undefined,
+    contact: undefined,
   }
+
+  contacts = []
 
   submitText: String
 
   constructor(
     private projectsService: ProjectsService,
+    private contactsService: ContactsService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router
@@ -39,6 +44,7 @@ export class ProjectsFormComponent implements OnInit {
     if(this.idProject) this.initProject()
 
     this.initSubmitText()
+    this.initContact()
   }
 
   onSubmit(form: NgForm) {
@@ -46,10 +52,17 @@ export class ProjectsFormComponent implements OnInit {
       label:      form.value['label']      || null,
       start_date: form.value['start_date'] || null,
       end_date:   form.value['end_date']   || null,
+      contact:    form.value['contact']    || null,
     }
 
     if(this.idProject) this.updateProject(values)
     else this.newProject(values)
+  }
+
+  async initContact() {
+    await this.contactsService.init()
+
+    this.contacts = await this.contactsService.getContacts()
   }
 
   async initProject() {

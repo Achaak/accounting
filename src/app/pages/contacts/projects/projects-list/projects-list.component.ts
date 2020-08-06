@@ -28,7 +28,7 @@ export class ProjectsListComponent implements OnInit {
   infoProjectRoute = RoutesConfig.routes.projectsInfo
 
   // Table
-  displayedColumns: string[] = ['label', 'start_date', 'start_end', 'actions'];
+  displayedColumns: string[] = ['label', 'start_date', 'start_end', 'contact', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -73,9 +73,8 @@ export class ProjectsListComponent implements OnInit {
 }
 
 export interface PeriodicElement {
-  name: string;
-  phone_number: string;
-  mail: string;
-  city: string;
-  website_link: string;
+  label: string;
+  start_date: string;
+  start_end: string;
+  contact: string;
 }

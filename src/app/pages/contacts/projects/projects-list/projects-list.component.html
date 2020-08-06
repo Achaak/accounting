@@ -17,13 +17,13 @@
       <!-- Mail Column -->
       <ng-container matColumnDef="start_end">
         <th mat-header-cell *matHeaderCellDef>Date de fin</th>
-        <td mat-cell *matCellDef="let element"> {{element.start_end}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.end_date}} </td>
       </ng-container>
   
       <!-- Mail Column -->
       <ng-container matColumnDef="contact">
         <th mat-header-cell *matHeaderCellDef>Contact</th>
-        <td mat-cell *matCellDef="let element"></td>
+        <td mat-cell *matCellDef="let element">{{element.contact && element.contact.name}}</td>
       </ng-container>
   
       <!-- City Column -->
