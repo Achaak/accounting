@@ -1,8 +1,8 @@
 <app-container [navLeft]="navLeft" title="Finances">
   
   <div class="date-ctner">
-    <input type="date" #dateStart (change)="setDateStart(dateStart.value)">
-    <input type="date" #dateEnd (change)="setDateEnd(dateEnd.value)">
+    <input type="date" #dateStartDOM (change)="setDateStart(dateStartDOM.value)" [value]="dateStart">
+    <input type="date" #dateEndDOM (change)="setDateEnd(dateEndDOM.value)" [value]="dateEnd">
   </div>
   
   <app-card>

@@ -21,8 +21,8 @@
             <div class="col-12 col-lg-4">
               <div class="input-group">
                 <label for="client">Client</label>
-                <select id="client" name="client" ngModel [(ngModel)]="bill.client && bill.client.id" required>
-                  <option *ngFor="let client of clients" [value]="client.id">{{ client.name }}</option>
+                <select id="client" name="client" ngModel [(ngModel)]="bill.contact && bill.contact.id" required>
+                  <option *ngFor="let contact of contacts" [value]="contact.id">{{ contact.name }}</option>
                 </select>
               </div>
             </div>

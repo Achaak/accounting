@@ -3,6 +3,7 @@ import navLeftConfigs from 'src/app/configs/navLeft.configs';
 import { TaxesService } from 'src/app/services/taxes/taxes.service';
 import { BillsService } from 'src/app/services/bills/bills.service';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 import { getCA, getTotalHT, getTotalTTC, getLeftToPay } from '../../services/tools/finance';
 
 @Component({
@@ -13,8 +14,8 @@ import { getCA, getTotalHT, getTotalTTC, getLeftToPay } from '../../services/too
 export class FinancesComponent implements OnInit {
 
   // Date
-  dateStart: Date
-  dateEnd: Date
+  dateStart = moment(new Date(moment().startOf('month').format())).format("YYYY-MM-DD")
+  dateEnd   = moment(new Date(moment().endOf('month').format())).format("YYYY-MM-DD")
   
   // Data taxes
   taxes: any[]
@@ -26,7 +27,10 @@ export class FinancesComponent implements OnInit {
 
   navLeft = navLeftConfigs.finances
 
-  constructor(private taxesService: TaxesService, private billsService: BillsService) { }
+  constructor(
+    private taxesService: TaxesService,
+    private billsService: BillsService
+  ) {}
 
   ngOnInit(): void {
 
@@ -48,7 +52,7 @@ export class FinancesComponent implements OnInit {
           const dateStart = new Date(this.dateStart).getTime()
 
           taxesFinal = taxesFinal.filter((o) => {
-            return new Date(o.billingDate).getTime() >= dateStart
+            return new Date(o.startDate).getTime() <= dateStart
           })
         }
 
@@ -56,7 +60,7 @@ export class FinancesComponent implements OnInit {
           const dateEnd = new Date(this.dateEnd).getTime()
 
           taxesFinal = taxesFinal.filter((o) => {
-            return new Date(o.billingDate).getTime() <= dateEnd
+            return new Date(o.endDate).getTime() >= dateEnd
           })
         }
 
@@ -88,6 +92,12 @@ export class FinancesComponent implements OnInit {
             return new Date(o.billingDate).getTime() <= dateEnd
           })
         }
+
+        billsFinal = billsFinal.filter((item) => {
+          if(item.state === 1) return true
+          return false
+        })
+
         this.bills = billsFinal
       }
     )
@@ -96,11 +106,13 @@ export class FinancesComponent implements OnInit {
 
   setDateStart(value) {
     this.dateStart = value
+    console.log(value)
     this.billsService.emitBillsSubject()
     this.taxesService.emitTaxesSubject()
   }
 
   setDateEnd(value) {
+    console.log(value, "zedfzef")
     this.dateEnd = value
     this.billsService.emitBillsSubject()
     this.taxesService.emitTaxesSubject()

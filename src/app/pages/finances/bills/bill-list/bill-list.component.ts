@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import _ from 'lodash'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bill-list',
@@ -23,11 +24,13 @@ export class BillListComponent implements OnInit {
   
   // Data bills
   bills: any[]
+  billsDraft: any[]
   billsSubscription: Subscription
 
   // Date
-  dateStart: Date
-  dateEnd: Date
+  dateStart = moment(new Date(moment().startOf('month').format())).format("YYYY-MM-DD")
+  dateEnd   = moment(new Date(moment().endOf('month').format())).format("YYYY-MM-DD")
+  stateBills: Number = 1
 
   updateBillRoute = RoutesConfig.routes.billUpdate
   infoBillRoute = RoutesConfig.routes.billInfo
@@ -71,6 +74,14 @@ export class BillListComponent implements OnInit {
           })
         }
 
+        // Verify state
+        if(this.stateBills !== -1) {
+          billsFinal = billsFinal.filter((item) => {
+            if(item.state === this.stateBills) return true
+            return false
+          })
+        }
+
         this.bills = billsFinal
 
         this.dataSource = new MatTableDataSource<PeriodicElement>(billsFinal);
@@ -102,6 +113,11 @@ export class BillListComponent implements OnInit {
 
   setDateEnd(value) {
     this.dateEnd = value
+    this.billsService.emitBillsSubject()
+  }
+
+  setStateBills(value) {
+    this.stateBills = parseInt(value)
     this.billsService.emitBillsSubject()
   }
 

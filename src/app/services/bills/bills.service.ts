@@ -41,6 +41,7 @@ export class BillsService {
   async addBill(values) {
     let message
     let status
+    let data
 
     const func = await Bills.setBill(this.authService.jwtToken, values)
 
@@ -50,6 +51,8 @@ export class BillsService {
     // If error
     if(func.status === 200) {
       this.loadBills()
+
+      data = func.data
     }
     else {
       message = "Les champs comportants * doivent être remplis"
@@ -57,7 +60,8 @@ export class BillsService {
 
     return {
       message: message,
-      status: status
+      status: status,
+      data: data
     }
   }
 

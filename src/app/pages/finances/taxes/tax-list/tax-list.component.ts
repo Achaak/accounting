@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import _ from 'lodash'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tax-list',
@@ -31,6 +32,10 @@ export class TaxListComponent implements OnInit {
   displayedColumns: string[] = ['label', 'target', 'value', 'startDate', 'endDate', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  // Date
+  dateStart = moment(new Date(moment().startOf('month').format())).format("YYYY-MM-DD")
+  dateEnd   = moment(new Date(moment().endOf('month').format())).format("YYYY-MM-DD")
   
   // Nav left
   navLeft = navLeftConfigs.finances
@@ -48,7 +53,27 @@ export class TaxListComponent implements OnInit {
 
     this.taxesSubscription = this.taxesService.taxesSubject.subscribe(
       (taxes: any) => {
-        this.dataSource = new MatTableDataSource<PeriodicElement>(taxes);
+        let taxesFinal = taxes
+        
+        if(this.dateStart) {
+          const dateStart = new Date(this.dateStart).getTime()
+
+          taxesFinal = taxesFinal.filter((o) => {
+            return new Date(o.startDate).getTime() <= dateStart
+          })
+        }
+
+        if(this.dateEnd) {
+          const dateEnd = new Date(this.dateEnd).getTime()
+
+          taxesFinal = taxesFinal.filter((o) => {
+            return new Date(o.endDate).getTime() >= dateEnd
+          })
+        }
+
+        this.taxes = taxesFinal
+
+        this.dataSource = new MatTableDataSource<PeriodicElement>(taxesFinal);
         this.dataSource.paginator = this.paginator;
       }
     )
@@ -72,6 +97,16 @@ export class TaxListComponent implements OnInit {
 
   getTargetTaxLabel(value) {
     return _.find(taxes_target, { value: value})
+  }
+
+  setDateStart(value) {
+    this.dateStart = value
+    this.taxesService.emitTaxesSubject()
+  }
+
+  setDateEnd(value) {
+    this.dateEnd = value
+    this.taxesService.emitTaxesSubject()
   }
 }
 
